@@ -80,7 +80,10 @@ class Server {
                 (response: Response<AnyObject, NSError>) in
                 let code = response.response!.statusCode
                 if code == 200 {
-                    callback(parseReportListJSON(response.result.value!))
+                    let dataString = NSString(data: response.data!, encoding:NSUTF8StringEncoding)
+                    print(dataString!)
+                    let reports = parseReportListJSON(response.result.value!)
+                    callback(reports)
                 } else {
                     print("genReports failed with status code " + String(code))
                 }
@@ -170,7 +173,7 @@ class Server {
         Alamofire.request(.POST, SERVER + "checkout", parameters: parameters)
     }
     
-    static func report (lat: Double, long: Double, userId: Int, callback: Int -> Void) {
+    static func report (lat: Double, long: Double, userId: Int, callback: String -> Void) {
         let parameters = [
             "lat": String(lat),
             "long": String(long),
@@ -180,7 +183,8 @@ class Server {
             response in
             let code = response.response!.statusCode
             if code == 200 {
-                callback(parseReportJSON(response.result.value!)._id)
+                let report = parseReportJSON(response.result.value!)
+                callback(report._id)
             } else {
                 print("report failed with status code " + String(code))
             }
@@ -196,16 +200,19 @@ class Server {
         Alamofire.request(.POST, SERVER + "lowbatt", parameters: parameters)
     }
     
-    static func reportInfo (location: String, going_on: Array<String>, needs_help: String, reportId: Int, anon: Bool, senderId: Int) {
+    static func reportInfo (location: String, drunk: Bool, assault: Bool, drugs: Bool, other: String, needs_help: String, reportId: String, anon: Bool, senderId: Int) {
         let parameters = [
             "location": location,
-            "going_on": going_on,
+            "drunk": String(drunk),
+            "sa": String(assault),
+            "drugs": String(drugs),
+            "other": other,
             "needs_help": needs_help,
             "anon": String(anon),
             "sender": String(senderId),
-            "_id": String(reportId)]
+            "_id": reportId]
         
-        Alamofire.request(.POST, SERVER + "reportinfo", parameters: (parameters as! [String : AnyObject]))
+        Alamofire.request(.POST, SERVER + "reportinfo", parameters: parameters)
     }
     
     static func register (name: String, phone: Int, username: String, pword: String, successCallback: User -> Void, failCallback: Int -> Void) {
@@ -271,13 +278,16 @@ class Server {
     
     static func parseReportJSON (obj: AnyObject) -> Report {
         let r:Report = Report()
-        r._id = Int((obj["_id"] as AnyObject? as? String) ?? "0")!
+        r._id = (obj["_id"] as AnyObject? as? String) ?? ""
         r.name = (obj["name"] as AnyObject? as? String) ?? ""
         r.sender = Int((obj["sender"] as AnyObject? as? String) ?? "0")!
         r.handler = Int((obj["handler"] as AnyObject? as? String) ?? "0")!
         r.lat = Double((obj["lat"] as AnyObject? as? String) ?? "0.0")!
         r.long = Double((obj["long"] as AnyObject? as? String) ?? "0.0")!
-        r.data = (obj["data"] as AnyObject? as? String) ?? ""
+        r.drunk = (obj["drunk"] as AnyObject? as? Bool) ?? false
+        r.sa = (obj["sa"] as AnyObject? as? Bool) ?? false
+        r.drugs = (obj[""] as AnyObject? as? Bool) ?? false
+        r.other = (obj["other"] as AnyObject? as? String) ?? ""
         
         return r
     }
@@ -308,13 +318,16 @@ class User {
 }
 
 class Report {
-    var _id = 0
+    var _id = ""
     var name = ""
     var sender = 0
     var handler = 0
     var lat = 0.0
     var long = 0.0
-    var data = ""
+    var drunk = false
+    var sa = false
+    var drugs = false
+    var other = ""
 }
 
 
