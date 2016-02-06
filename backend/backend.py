@@ -78,7 +78,7 @@ def report():
   name = None if anon else User.find_one({'_id': user_id}, projection={'name':True})['name']
   msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
   notify_admins(msg)
-  return jsonify({'id': new_report(None if anon else user_id, lat, longg)})
+  return jsonify({'_id': new_report(None if anon else user_id, lat, longg)})
 
 @app.route('/lowbatt', methods=['POST'])
 def lowbatt():
@@ -121,7 +121,7 @@ def admins():
 def reports():
   keys = ['_id', 'sender', 'handler', 'lat', 'long', 'data', 'time']
   report_list = list(Report.find(projection=keys))
-  [report.update(_id=str(report['_id'])) for report in report_list]
+  [report.update(_id=str(report['_id']),name='Report opened at {}'.format(time)) for report in report_list]
   return jsonify({'reports': report_list})
 
 @app.route('/addadmin', methods=['POST'])
