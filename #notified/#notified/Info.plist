@@ -41,20 +41,27 @@
 		<string>Muli-Regular.ttf</string>
 		<string>DINAlternate.ttf</string>
 	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>29b4e03b.ngrok.io</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSTemporaryExceptionMinimumTLSVersion</key>
-				<string>TLSv1.1</string>
-			</dict>
-		</dict>
-	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>3ff619ec.ngrok.io</key>
+            <dict>
+                <!--Include to allow subdomains-->
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!--Include to allow HTTP requests-->
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <!--Include to specify minimum TLS version-->
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.1</string>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 </plist>
