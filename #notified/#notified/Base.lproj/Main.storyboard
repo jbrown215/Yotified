@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -54,11 +54,11 @@
                                         <rect key="frame" x="0.0" y="28" width="273" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAa-CX-KMR" id="Lbd-mm-6ft">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Kt-Df-Fsg">
-                                                    <rect key="frame" x="15" y="0.0" width="243" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="243" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="DINBoldAlternate" family="DIN" pointSize="28"/>
                                                     <color key="textColor" red="1" green="0.92941176469999998" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,11 +74,11 @@
                                         <rect key="frame" x="0.0" y="72" width="273" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn9-Dd-HxX" id="4yr-Fb-spL">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhF-lK-EAt">
-                                                    <rect key="frame" x="15" y="0.0" width="243" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="243" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
@@ -764,25 +764,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zda-GH-lGv">
-                                <rect key="frame" x="123.99999993133663" y="173" width="149" height="30"/>
+                                <rect key="frame" x="124" y="167" width="149" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="5612127815">
+                                <state key="normal">
                                     <color key="titleColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="makeCall" destination="sxi-Ew-MzV" eventType="touchUpInside" id="f7G-9o-ef0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VIK-ra-DRG">
-                                <rect key="frame" x="22" y="112" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="24"/>
-                                <state key="normal" title="Status: blah blah">
-                                    <color key="titleColor" red="1" green="0.92941176469999998" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeCall" destination="sxi-Ew-MzV" eventType="touchUpInside" id="JCN-hZ-8Uw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Address and More Address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xE3-63-PiB">
@@ -800,6 +789,13 @@
                                 <rect key="frame" x="34" y="159" width="89" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zg-4f-Nu3">
+                                <rect key="frame" x="5" y="129" width="315" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.92941176470588238" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.039215686270000001" green="0.1450980392" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -807,6 +803,7 @@
                         <outlet property="addressLabel" destination="xE3-63-PiB" id="TRO-6C-gvg"/>
                         <outlet property="contactButton" destination="Zda-GH-lGv" id="6Q4-Vf-O6a"/>
                         <outlet property="label" destination="JrD-sO-4bl" id="yd0-M9-Qdg"/>
+                        <outlet property="statusLabel" destination="0zg-4f-Nu3" id="FsF-wj-3Bx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkd-af-71j" userLabel="First Responder" sceneMemberID="firstResponder"/>
