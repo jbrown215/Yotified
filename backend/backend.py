@@ -27,6 +27,13 @@ afrieder = {
 }
 User.insert_one(afrieder)
 
+afrieder_account = {
+  '_id': '6312781242',
+  'username': 'afrieder',
+  'password': 'password'
+}
+Account.insert_one(afrieder_account)
+
 blichtma = {
   'name': "Ben Lichtman",
   '_id': "6102466685",
@@ -39,22 +46,18 @@ blichtma = {
 }
 User.insert_one(blichtma)
 
+blichtma_account = {
+  '_id': '6102466685',
+  'username': 'blichtma',
+  'password': 'password'
+}
+Account.insert_one(blichtma_account)
+
 def notify_admins(msg):
   admins = User.find(filter={'admin':True}, projection={"token":True})
   for admin in admins:
     payload = Payload(alert=msg, sound="default", badge=1)
     apns.gateway_server.send_notification(admin['token'], payload)
-
-def new_report(sender, lat, longg):
-  report = {
-    'time': strftime('%I:%M %p'),
-    'sender': sender,
-    'lat': lat,
-    'long': longg,
-    'handler': None,
-    'data': None
-  }
-  return str(Report.insert_one(report).inserted_id)
 
 @app.route('/checkin', methods=['POST'])
 def checkin():
@@ -78,9 +81,18 @@ def report():
   longg = request.form['long']
   User.update_one({'_id':user_id}, {'$set': {'lat': lat, 'long': longg}})
   name = None if anon else User.find_one({'_id': user_id}, projection={'name':True})['name']
+  report = {
+    'time': strftime('%I:%M %p'),
+    'sender': None if anon else user_id,
+    'lat': lat,
+    'long': longg,
+    'handler': None,
+    'data': None
+  }
+  report_id = Report.insert_one(report).inserted_id
   msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
   notify_admins(msg)
-  return jsonify({'_id': new_report(None if anon else user_id, lat, longg)})
+  return jsonify({'_id': report_id})
 
 @app.route('/lowbatt', methods=['POST'])
 def lowbatt():
