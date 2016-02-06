@@ -9,6 +9,8 @@ navy blue - #0A2254
 pale blue - #9EBBF7
 blue text on pale blue - #2C4579
 light blue text on navy blue - #CCDAF5
+yellow pale - #FFED75
+yellow dark text - #7C722D
 
 search bar background - #1E386D
 selected tab bar icon - #6C94E6
