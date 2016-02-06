@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         // Server.checkIn(40.445410, long: -79.942572, id: 6102466685)
-        Server.genRoster()
+        Server.pingServer()
+        let printName = { (result: Array<User>) -> Void in
+            print("RISK MANAGED") }
+        Server.genRoster(printName)
         return true
     }
 
