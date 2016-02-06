@@ -19,6 +19,8 @@
 		2799B3FA1C658B4600F4DA9D /* _notifiedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B3F91C658B4600F4DA9D /* _notifiedTests.swift */; };
 		2799B4051C658B4600F4DA9D /* _notifiedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B4041C658B4600F4DA9D /* _notifiedUITests.swift */; };
 		279D694F1C665EEE003101F9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279D694E1C665EEE003101F9 /* CoreLocation.framework */; };
+		279D69641C667BC6003101F9 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D981DEC91C665BCE00538B4B /* Muli-Regular.ttf */; };
+		279D69651C667BC6003101F9 /* DINAlternate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97E8CFF1C665ED100B221A6 /* DINAlternate.ttf */; };
 		27AA7A9D1C65AE490054C45F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; };
 		27AA7A9E1C65AE490054C45F /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27AA7AA31C65AFA00054C45F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AA7AA21C65AFA00054C45F /* Server.swift */; };
@@ -535,6 +537,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279D69641C667BC6003101F9 /* Muli-Regular.ttf in Resources */,
+				279D69651C667BC6003101F9 /* DINAlternate.ttf in Resources */,
 				D981DEC51C66544700538B4B /* logo.png in Resources */,
 				2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */,
 				2799B3EC1C658B4600F4DA9D /* Assets.xcassets in Resources */,
@@ -727,7 +731,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "#notified/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -743,7 +747,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "#notified/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
