@@ -19,8 +19,10 @@
             <string>DINBoldAlternate</string>
             <string>DINBoldAlternate</string>
             <string>DINBoldAlternate</string>
+            <string>DINBoldAlternate</string>
         </mutableArray>
         <mutableArray key="Muli-Regular.ttf">
+            <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
             <string>Muli</string>
@@ -28,7 +30,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Tonight View Controller-->
+        <!--Tonight-->
         <scene sceneID="lvS-kV-i6D">
             <objects>
                 <viewController id="g4d-CK-HvW" customClass="TonightViewController" customModule="_notified" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,41 +39,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="W5b-5m-iEu">
-                                <rect key="frame" x="0.0" y="64" width="320" height="453"/>
+                                <rect key="frame" x="31" y="92" width="259" height="393"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.039215686270000001" green="0.090196078430000007" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.039215686274509803" green="0.090196078431372548" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeader" id="NAa-CX-KMR">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="259" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAa-CX-KMR" id="Lbd-mm-6ft">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jy9-9H-A9k">
-                                                    <rect key="frame" x="8" y="8" width="304" height="24"/>
+                                                    <rect key="frame" x="8" y="1" width="243" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.039215686270000001" green="0.090196078430000007" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="DINBoldAlternate" family="DIN" pointSize="28"/>
+                                                    <color key="textColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.039215686270000001" green="0.090196078430000007" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" textLabel="lhF-lK-EAt" style="IBUITableViewCellStyleDefault" id="Dn9-Dd-HxX">
+                                        <rect key="frame" x="0.0" y="136" width="259" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn9-Dd-HxX" id="4yr-Fb-spL">
+                                            <rect key="frame" x="0.0" y="0.0" width="259" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhF-lK-EAt">
+                                                    <rect key="frame" x="15" y="0.0" width="229" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                                                    <color key="textColor" red="0.17254901959999999" green="0.27058823529999998" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" id="Dn9-Dd-HxX">
-                                        <rect key="frame" x="0.0" y="136" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn9-Dd-HxX" id="4yr-Fb-spL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.039215686270000001" green="0.090196078430000007" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.035294117649999998" green="0.2156862745" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WC2-MA-KTF"/>
+                    <navigationItem key="navigationItem" title="Tonight" id="WC2-MA-KTF"/>
                     <connections>
                         <outlet property="tableView" destination="W5b-5m-iEu" id="kLU-7R-JfZ"/>
                     </connections>
@@ -546,14 +563,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" textLabel="hTA-Hn-BP8" style="IBUITableViewCellStyleDefault" id="LDt-qV-oHV">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LDt-qV-oHV" id="kxw-tI-CVF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hTA-Hn-BP8">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
