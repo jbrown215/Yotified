@@ -24,6 +24,8 @@
 		27C4225E1C6616CA005AE50F /* TonightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4225D1C6616CA005AE50F /* TonightViewController.swift */; };
 		27C422601C661A69005AE50F /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4225F1C661A69005AE50F /* ContactDetailViewController.swift */; };
 		27C422641C662E3A005AE50F /* AdminViewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C422631C662E3A005AE50F /* AdminViewReportViewController.swift */; };
+		D981DEC51C66544700538B4B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D981DEC41C66544700538B4B /* logo.png */; };
+		D981DEC81C66557600538B4B /* backgroundcheck.png in Resources */ = {isa = PBXBuildFile; fileRef = D981DEC71C66557600538B4B /* backgroundcheck.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,10 @@
 		27C4225D1C6616CA005AE50F /* TonightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonightViewController.swift; sourceTree = "<group>"; };
 		27C4225F1C661A69005AE50F /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		27C422631C662E3A005AE50F /* AdminViewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewReportViewController.swift; sourceTree = "<group>"; };
+		D97E8CFF1C665ED100B221A6 /* DINAlternate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DINAlternate.ttf; sourceTree = "<group>"; };
+		D981DEC41C66544700538B4B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../design/logo.png; sourceTree = "<group>"; };
+		D981DEC71C66557600538B4B /* backgroundcheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundcheck.png; sourceTree = "<group>"; };
+		D981DEC91C665BCE00538B4B /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,7 @@
 		2799B3E31C658B4600F4DA9D /* #notified */ = {
 			isa = PBXGroup;
 			children = (
+				D981DEC61C66549400538B4B /* images */,
 				2799B3E41C658B4600F4DA9D /* AppDelegate.swift */,
 				2799B3E61C658B4600F4DA9D /* HomeViewController.swift */,
 				194D44B21C65A5F70080C653 /* CheckedInViewController.swift */,
@@ -236,6 +243,17 @@
 				27AA7A9C1C65AC470054C45F /* Alamofire.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D981DEC61C66549400538B4B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D981DEC91C665BCE00538B4B /* Muli-Regular.ttf */,
+				D97E8CFF1C665ED100B221A6 /* DINAlternate.ttf */,
+				D981DEC71C66557600538B4B /* backgroundcheck.png */,
+				D981DEC41C66544700538B4B /* logo.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,9 +432,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D981DEC51C66544700538B4B /* logo.png in Resources */,
 				2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */,
 				2799B3EC1C658B4600F4DA9D /* Assets.xcassets in Resources */,
 				2799B3EA1C658B4600F4DA9D /* Main.storyboard in Resources */,
+				D981DEC81C66557600538B4B /* backgroundcheck.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
