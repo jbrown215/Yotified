@@ -17,8 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue0-6w-ABg">
+                                <rect key="frame" x="209" y="308" width="182" height="119"/>
+                                <state key="normal" title="Make Report"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxK-be-wft">
-                                <rect key="frame" x="184" y="85" width="233" height="152"/>
+                                <rect key="frame" x="209" y="126" width="177" height="113"/>
                                 <state key="normal" title="Check In"/>
                                 <connections>
                                     <action selector="checkIn" destination="BYZ-38-t0r" eventType="touchUpInside" id="72z-CR-1pF"/>
