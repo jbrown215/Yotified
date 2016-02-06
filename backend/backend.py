@@ -132,7 +132,7 @@ def reportinfo():
   drunk = request.form['drunk'] in ('true', 'True')
   sa = request.form['sa'] in ('true', 'True')
   drugs = request.form['drugs'] in ('true', 'True')
-  other = request.form['other']
+  other = request.form['other'] in ('true', 'True')
   _sender = request.form['sender']
   anon = request.form['anon'] in ('true', 'True')
   Report.update_one({'_id':report_id}, {'$set':
