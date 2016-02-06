@@ -53,11 +53,10 @@ blichtma_account = {
 }
 Account.insert_one(blichtma_account)
 
-def notify_admins(msg):
-  admins = User.find(filter={'admin':True}, projection={"token":True})
-  for admin in admins:
+def notify_users(users, msg):
+  for user in users:
     payload = Payload(alert=msg, sound="default", badge=1)
-    apns.gateway_server.send_notification(admin['token'], payload)
+    apns.gateway_server.send_notification(user['token'], payload)
 
 @app.route('/checkin', methods=['POST'])
 def checkin():
@@ -84,6 +83,7 @@ def report():
   report = {
     'time': strftime('%I:%M %p'),
     'sender': None if anon else user_id,
+    '_sender': user_id,
     'lat': lat,
     'long': longg,
     'handler': None,
@@ -91,7 +91,8 @@ def report():
   }
   report_id = Report.insert_one(report).inserted_id
   msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
-  notify_admins(msg)
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, msg)
   return jsonify({'_id': report_id})
 
 @app.route('/lowbatt', methods=['POST'])
@@ -101,7 +102,8 @@ def lowbatt():
   longg = request.form['long']
   User.update_one({'_id':user_id}, {'$set': {'lat': lat, 'long': longg}})
   name = User.find_one({'_id':user_id}, projection={'name':True})['name']
-  notify_admins("{} has a low battery.".format(name))
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, "{} has a low battery.".format(name))
   return ''
 
 @app.route('/reportinfo', methods=['POST'])
@@ -110,7 +112,8 @@ def reportinfo():
   data = request.form['data']
   Report.update_one({'_id':report_id}, {'$set': {'data': data}})
   time = Report.find_one({'_id': report_id}, projection={'time':True})['time']
-  notify_admins("The report opened at {} has been updated.".format(time))
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, "The report opened at {} has been updated.".format(time))
   return ''
 
 @app.route('/roster', methods=['GET'])
@@ -163,7 +166,10 @@ def toggleduty():
 
 @app.route('/handlereport', methods=['POST'])
 def handlereport():
-  Report.update_one({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
+  report = Report.find_one_and_update({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
+  name = User.find_one({'_id': request.form['handler']}, projection={'name':True})['name']
+  user = User.find_one({'_id': report['_sender']}, projection={'token': True})
+  notify_users([user], "{} is handling your report.".format(name))
   return ''
 
 @app.route('/clearreport', methods=['POST'])
