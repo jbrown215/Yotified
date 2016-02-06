@@ -8,49 +8,73 @@ USER:
     /checkin
       lat: latitude of current location (as str)
       long: longitude of current location (as str)
-      id: user's id as str
+      _id: user's id as str
     /checkout
-      id: user's id as str
+      _id: user's id as str
     /report
       lat: latitude of current location (as str)
       long: longitude of current location (as str)
       anon: does user want it to be anonymous?
-      id: user's id as str
+      _id: user's id as str
       RETURNS
-        id: id of report
+        _id: id of report
     /lowbatt
       lat: latitude of current location (as str)
       long: longitude of current location (as str)
-      id: user's id as str
+      _id: user's id as str
     /reportinfo
       data: str of all user's info
-      id: reports id as str
+      _id: reports id as str
+    /register
+      name: user's name
+      phone: str
+      username: user's login
+      password: SHA-3 hash of user's password
+      token: user's device id token
+      Returns
+        phone: user's phone number as str
+        name: user's name
+        admin: whether the user's an admin or not
+        _id: user's id as str
+      Raises:
+        400 if phone number already attached to account
+        400 if username already used
+    /login
+      username: user's login
+      password: SHA-3 hash of user's password
+      Returns:
+        phone: user's phone number as str
+        name: user's name
+        admin: whether the user's an admin or not
+        _id: user's id as str
+      Raises:
+        401 if user not found
 
 ADMIN:
   GET:
     /checkedin
       roster: (list of)
         name: duh
-        id: user's id as str
+        _id: user's id as str
         phone: phone number (as str)
         lat: latitude of last location (as str)
         long: longitude of last location (as str)
     /roster
       roster: (list of)
         name: duh
-        id: user's id as str
+        _id: user's id as str
         phone: phone number (as str)
         lat: latitude of last location (as str)
         long: longitude of last location (as str)
         checkedin: bool of whether user is checked in or not
     /admins
       admins: (list of)
-        id = user's id as str
+        _id = user's id as str
         name: duh
         phone: phone number
     /reports
       reports: (list of)
-        id: unique id for report (int)
+        _id: unique id for report (int)
         name: name of the report (str)
         sender: unique id for reporter (null if anonymous)
         handler: unique id for admin handler (null if not yet handled)
@@ -60,15 +84,19 @@ ADMIN:
 
   POST:
     /addadmin
-      id: (user's phone number)
+      _id: (user's phone number)
     /deladmin
-      id: (user's phone number)
+      _id: (user's phone number)
+      Raises:
+        406 if last admin
     /toggleduty
-      id: (user's phone number)
+      _id: (user's phone number)
+      Raises:
+        406 if last admin and trying to toggle self
     /handlereport
-      id: id of report
+      _id: id of report
       handler: id of handler (str)
     /clearreport
-      id: id of report
+      _id: id of report
       (Can only be reached by handler)
 
