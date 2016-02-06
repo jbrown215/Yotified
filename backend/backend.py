@@ -205,5 +205,9 @@ def login():
   user = User.find_one({'_id': account['_id']}, projection=['phone', 'name', 'admin', '_id'])
   return jsonify(user)
 
+@app.route('/curadmin', methods=['POST'])
+def curadmin():
+  return jsonify(User.find_one({'_id':request.form['_id']}, projection={'admin':True}))
+
 if __name__ == '__main__':
     app.run(debug=True)

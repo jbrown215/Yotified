@@ -100,4 +100,8 @@ ADMIN:
     /clearreport
       _id: id of report
       (Can only be reached by handler)
+    /curadmin
+      _id: user id
+      Returns:
+        admin: true if on duty, false if off duty, null if not admin I KNOW SHUT UP
 
