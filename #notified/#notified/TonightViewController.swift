@@ -89,6 +89,11 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         return headerView;
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    
     
     @IBAction func unwindToTonightView(segue : UIStoryboardSegue) {
         print ("Unwind to tonight view")
