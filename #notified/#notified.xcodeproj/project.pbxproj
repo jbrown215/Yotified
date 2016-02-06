@@ -19,6 +19,7 @@
 		27AA7A9D1C65AE490054C45F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; };
 		27AA7A9E1C65AE490054C45F /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27AA7AA31C65AFA00054C45F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AA7AA21C65AFA00054C45F /* Server.swift */; };
+		27C422541C65C37A005AE50F /* PostReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C422531C65C37A005AE50F /* PostReportViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		2799B4061C658B4600F4DA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27AA7A851C65AC470054C45F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		27AA7AA21C65AFA00054C45F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		27C422531C65C37A005AE50F /* PostReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				2799B3EB1C658B4600F4DA9D /* Assets.xcassets */,
 				2799B3ED1C658B4600F4DA9D /* LaunchScreen.storyboard */,
 				2799B3F01C658B4600F4DA9D /* Info.plist */,
+				27C422531C65C37A005AE50F /* PostReportViewController.swift */,
 			);
 			path = "#notified";
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				194D44B51C65A92B0080C653 /* ReportViewController.swift in Sources */,
 				194D44B31C65A5F70080C653 /* CheckedInViewController.swift in Sources */,
 				2799B3E71C658B4600F4DA9D /* HomeViewController.swift in Sources */,
+				27C422541C65C37A005AE50F /* PostReportViewController.swift in Sources */,
 				2799B3E51C658B4600F4DA9D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
