@@ -37,7 +37,7 @@ blichtma = {
   'long': None,
   'admin': True,
   'checkedin': False,
-  'token': "Uhhhhhhh..?",
+  'token': "09ec5b178f01dc1a2ae0489c1700cc4afe06682adeca6a22e267483e37e393dc",
 }
 User.insert_one(blichtma)
 
@@ -81,7 +81,7 @@ def report():
   msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
   admins = User.find(filter={'admin':True}, projection={"token":True})
   notify_users(admins, msg)
-  return jsonify({'_id': report_id})
+  return jsonify({'_id': str(report_id)})
 
 @app.route('/lowbatt', methods=['POST'])
 def lowbatt():
@@ -180,7 +180,7 @@ def register():
     'lat': None,
     'long': None,
     'admin': None,
-    'checkedin': None,
+    'checkedin': False,
     'token': request.form['token']
   }
   User.insert_one(user)
