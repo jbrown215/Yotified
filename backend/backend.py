@@ -75,7 +75,10 @@ def report():
     'handler': None,
     'needs_help': None,
     'location': None,
-    'going_on': []
+    'drunk': False,
+    'drugs': False,
+    'sa': False,
+    'other': ''
   }
   report_id = Report.insert_one(report).inserted_id
   msg = "A new report has been opened!"
@@ -99,10 +102,15 @@ def reportinfo():
   report_id = ObjectId(request.form['_id'])
   needs_help = request.form['needs_help']
   location = request.form['location']
-  going_on = request.form['going_on']
-  sender = request.form['sender']
+  drunk = request.form['drunk'] in ('true', 'True')
+  sa = request.form['sa'] in ('true', 'True')
+  drugs = request.form['drugs'] in ('true', 'True')
+  other = request.form['other']
+  _sender = request.form['sender']
   anon = request.form['anon'] in ('true', 'True')
-  Report.update_one({'_id':report_id}, {'$set': {'location': location, 'needs_help': needs_help, 'going_on': going_on, 'sender': None if anon else sender}})
+  Report.update_one({'_id':report_id}, {'$set':
+    {'location': location, 'needs_help': needs_help, 'sender': None if anon else _sender,
+     'drunk': drunk, 'drugs': drugs, 'sa': sa, 'other': other}})
   time = Report.find_one({'_id': report_id}, projection={'time':True})['time']
   admins = User.find(filter={'admin':True}, projection={"token":True})
   notify_users(admins, "The report opened at {} has been updated.".format(time))
@@ -128,9 +136,9 @@ def admins():
 
 @app.route('/reports', methods=['GET'])
 def reports():
-  keys = ['_id', 'sender', 'handler', 'lat', 'long', 'going_on', 'location', 'needs_help', 'time']
+  keys = ['_id', 'sender', 'handler', 'lat', 'long', 'drunk', 'sa', 'drugs', 'other', 'location', 'needs_help', 'time']
   report_list = list(Report.find(projection=keys))
-  [report.update(_id=str(report['_id']),name='Report opened at {}'.format(time)) for report in report_list]
+  [report.update(_id=str(report['_id']),name='Report opened at {}'.format(report['time'])) for report in report_list]
   return jsonify({'reports': report_list})
 
 @app.route('/addadmin', methods=['POST'])
