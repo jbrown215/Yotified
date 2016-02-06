@@ -51,8 +51,8 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        if (indexPath.row >= atRiskMembers.count) {
-            cell.textLabel?.text = checkedInMembers[indexPath.row - atRiskMembers.count]
+        if (indexPath.section == 1) {
+            cell.textLabel?.text = checkedInMembers[indexPath.row]
         } else {
             cell.textLabel?.text = atRiskMembers[indexPath.row]
         }
@@ -63,9 +63,9 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if (indexPath.row >= atRiskMembers.count) {
+        if (indexPath.section == 1) {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-                resultController.name = checkedInMembers[indexPath.row - atRiskMembers.count]
+                resultController.name = checkedInMembers[indexPath.row]
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         } else {
@@ -80,14 +80,18 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let CellIdentifier = "SectionHeader"
         let headerView = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
-        let label = headerView?.viewWithTag(3) as! UILabel!
         if (section == 0) {
-            label.text = "At Risk"
+            headerView?.textLabel!.text = "At Risk"
         } else {
-            label.text = "Checked In"
+            headerView?.textLabel!.text = "Checked In"
         }
         return headerView;
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
     
     
     @IBAction func unwindToTonightView(segue : UIStoryboardSegue) {

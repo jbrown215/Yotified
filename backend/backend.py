@@ -63,22 +63,22 @@ def checkout():
 @app.route('/report', methods=['POST'])
 def report():
   user_id = request.form['_id']
-  anon = request.form['anon'] in ('true', 'True')
   lat = request.form['lat']
   longg = request.form['long']
   User.update_one({'_id':user_id}, {'$set': {'lat': lat, 'long': longg}})
-  name = None if anon else User.find_one({'_id': user_id}, projection={'name':True})['name']
   report = {
     'time': strftime('%I:%M %p'),
-    'sender': None if anon else user_id,
+    'sender': None,
     '_sender': user_id,
     'lat': lat,
     'long': longg,
     'handler': None,
-    'data': None
+    'needs_help': None,
+    'location': None,
+    'going_on': []
   }
   report_id = Report.insert_one(report).inserted_id
-  msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
+  msg = "A new report has been opened!"
   admins = User.find(filter={'admin':True}, projection={"token":True})
   notify_users(admins, msg)
   return jsonify({'_id': str(report_id)})
@@ -97,8 +97,12 @@ def lowbatt():
 @app.route('/reportinfo', methods=['POST'])
 def reportinfo():
   report_id = ObjectId(request.form['_id'])
-  data = request.form['data']
-  Report.update_one({'_id':report_id}, {'$set': {'data': data}})
+  needs_help = request.form['needs_help']
+  location = request.form['location']
+  going_on = request.form['going_on']
+  sender = request.form['sender']
+  anon = request.form['anon'] in ('true', 'True')
+  Report.update_one({'_id':report_id}, {'$set': {'location': location, 'needs_help': needs_help, 'going_on': going_on, 'sender': None if anon else sender}})
   time = Report.find_one({'_id': report_id}, projection={'time':True})['time']
   admins = User.find(filter={'admin':True}, projection={"token":True})
   notify_users(admins, "The report opened at {} has been updated.".format(time))
@@ -124,7 +128,7 @@ def admins():
 
 @app.route('/reports', methods=['GET'])
 def reports():
-  keys = ['_id', 'sender', 'handler', 'lat', 'long', 'data', 'time']
+  keys = ['_id', 'sender', 'handler', 'lat', 'long', 'going_on', 'location', 'needs_help', 'time']
   report_list = list(Report.find(projection=keys))
   [report.update(_id=str(report['_id']),name='Report opened at {}'.format(time)) for report in report_list]
   return jsonify({'reports': report_list})
