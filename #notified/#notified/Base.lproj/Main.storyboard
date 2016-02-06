@@ -558,7 +558,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="settingsinactive.png" id="sc7-Hg-xxX"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingszzzz.png" selectedImage="settingszzzz.png" id="sc7-Hg-xxX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpv-vk-yA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -700,6 +700,13 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9dT-L1-gwu">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.047058823530000002" green="0.090196078430000007" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.039215686274509803" green="0.062745098039215685" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="Uhg-OI-Vzn" kind="relationship" relationship="viewControllers" id="rZD-De-fgc"/>
@@ -715,7 +722,7 @@
         <scene sceneID="2pu-a7-o6M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uhg-OI-Vzn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tonight" id="hOF-wM-fdn"/>
+                    <tabBarItem key="tabBarItem" title="Tonight" image="tongggight.png" selectedImage="tongggight.png" id="hOF-wM-fdn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2v6-DG-8jr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -734,7 +741,7 @@
         <scene sceneID="BfC-C6-hQu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBc-dR-ayL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" image="phoneinactive.png" selectedImage="phoneactive.png" id="zCQ-Fk-QI4"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="phoneeee.png" selectedImage="phoneeee.png" id="zCQ-Fk-QI4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VDF-xI-NQg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -754,12 +761,13 @@
         <image name="backgroundcheck.png" width="668" height="569"/>
         <image name="housecontact.png" width="578" height="543"/>
         <image name="logo.png" width="284" height="199"/>
-        <image name="phoneactive.png" width="578" height="543"/>
         <image name="phonecontact.png" width="578" height="543"/>
-        <image name="phoneinactive.png" width="578" height="543"/>
-        <image name="settingsinactive.png" width="578" height="543"/>
+        <image name="phoneeee.png" width="25" height="25"/>
+        <image name="settingszzzz.png" width="26" height="26"/>
+        <image name="tongggight.png" width="11" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sAM-5p-C8R"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
