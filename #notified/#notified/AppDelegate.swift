@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+       /* Server.report(37.785834, long: -122.406417, userId: 6102466685, callback: {
+            reportId in
+            Server.reportInfo("my house", drunk: true, assault: false, drugs: false, other: "", needs_help: "Ben Lichtman", reportId: reportId, anon: false, senderId: 6102466685)
+        })*/
+        
         return true
     }
 

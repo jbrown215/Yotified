@@ -13,8 +13,8 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet var tableView : UITableView!
     
-    var checkedInMembers = ["Jordan", "Caroline", "Frieder", "Ben"]
-    var atRiskMembers = ["Ben"]
+    var checkedInMembers : Array<User> = []
+    var atRiskMembers : Array<Report> = []
     
     let textCellIdentifier = "TextCell"
     
@@ -23,7 +23,18 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.delegate = self;
         tableView.dataSource = self
-
+        
+        Server.genCheckedIn({
+            users in
+            self.checkedInMembers = users
+            Server.genReports({
+                reports in
+                self.atRiskMembers = reports
+                self.tableView.reloadData()
+                
+            })
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +63,9 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         if (indexPath.section == 1) {
-            cell.textLabel?.text = checkedInMembers[indexPath.row]
+            cell.textLabel?.text = checkedInMembers[indexPath.row].name
         } else {
-            cell.textLabel?.text = atRiskMembers[indexPath.row]
+            cell.textLabel?.text = atRiskMembers[indexPath.row].name
         }
         
         return cell
@@ -65,12 +76,12 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (indexPath.section == 1) {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-                resultController.name = checkedInMembers[indexPath.row]
+                resultController.name = checkedInMembers[indexPath.row].name
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         } else {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("AdminViewReportViewController") as? AdminViewReportViewController {
-                resultController.name = atRiskMembers[indexPath.row]
+                resultController.name = atRiskMembers[indexPath.row].name
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
