@@ -80,11 +80,10 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let CellIdentifier = "SectionHeader"
         let headerView = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
-        let label = headerView?.viewWithTag(3) as! UILabel!
         if (section == 0) {
-            label.text = "At Risk"
+            headerView?.textLabel!.text = "At Risk"
         } else {
-            label.text = "Checked In"
+            headerView?.textLabel!.text = "Checked In"
         }
         return headerView;
     }
