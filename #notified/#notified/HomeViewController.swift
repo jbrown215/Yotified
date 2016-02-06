@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var button : UIButton?
+    let locationManager : CLLocationManager = CLLocationManager()
+    var currentLoc : CLLocationCoordinate2D = CLLocationCoordinate2DMake(-100000, -100000);
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            locationManager.requestWhenInUseAuthorization()
+            
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +36,9 @@ class HomeViewController: UIViewController {
   
     @IBAction func checkIn() {
         print("Checking In");
+        if (CLLocationCoordinate2DIsValid(currentLoc)) {
+            print("valid loc")
+        }
     }
 
     @IBAction func makeReport() {
@@ -33,7 +48,13 @@ class HomeViewController: UIViewController {
     @IBAction func unwindToHome(segue:UIStoryboardSegue) {
         print ("Unwindeded")
     }
-
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        currentLoc = locValue
+        
+    }
     
 }
 

@@ -16,6 +16,7 @@
 		2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2799B3ED1C658B4600F4DA9D /* LaunchScreen.storyboard */; };
 		2799B3FA1C658B4600F4DA9D /* _notifiedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B3F91C658B4600F4DA9D /* _notifiedTests.swift */; };
 		2799B4051C658B4600F4DA9D /* _notifiedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B4041C658B4600F4DA9D /* _notifiedUITests.swift */; };
+		279D694F1C665EEE003101F9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279D694E1C665EEE003101F9 /* CoreLocation.framework */; };
 		27AA7A9D1C65AE490054C45F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; };
 		27AA7A9E1C65AE490054C45F /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27AA7AA31C65AFA00054C45F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AA7AA21C65AFA00054C45F /* Server.swift */; };
@@ -129,6 +130,7 @@
 		2799B4001C658B4600F4DA9D /* #notifiedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "#notifiedUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2799B4041C658B4600F4DA9D /* _notifiedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _notifiedUITests.swift; sourceTree = "<group>"; };
 		2799B4061C658B4600F4DA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		279D694E1C665EEE003101F9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		27AA7A851C65AC470054C45F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		27AA7AA21C65AFA00054C45F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		27C422531C65C37A005AE50F /* PostReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279D694F1C665EEE003101F9 /* CoreLocation.framework in Frameworks */,
 				27AA7A9D1C65AE490054C45F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +170,7 @@
 		2799B3D81C658B4600F4DA9D = {
 			isa = PBXGroup;
 			children = (
+				279D694E1C665EEE003101F9 /* CoreLocation.framework */,
 				27AA7A851C65AC470054C45F /* Alamofire.xcodeproj */,
 				2799B3E31C658B4600F4DA9D /* #notified */,
 				2799B3F81C658B4600F4DA9D /* #notifiedTests */,
