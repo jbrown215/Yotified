@@ -613,7 +613,7 @@
                     <view key="view" contentMode="scaleToFill" id="eMx-WA-Dp9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.035294117649999998" green="0.2156862745" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingszzzz.png" selectedImage="settingszzzz.png" id="sc7-Hg-xxX"/>
                 </viewController>
