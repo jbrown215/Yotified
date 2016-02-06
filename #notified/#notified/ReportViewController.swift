@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ReportViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ReportViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate {
 
     @IBOutlet var tableView : UITableView!
     @IBOutlet var searchBar : UISearchBar!
+    @IBOutlet var sliderSwitch : UISwitch!
+    @IBOutlet var whereTextField : UITextField!
     
     let textCellIdentifier = "TextCell"
     
@@ -27,6 +29,8 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        tableView.hidden = true
+        whereTextField.delegate = self
         
         for troubleOption in roster {
             selectedMap[troubleOption] = false;
@@ -38,6 +42,17 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: - TextField delegate methods
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     // MARK: - Search bar protocol methods
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -56,6 +71,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         searchActive = false;
     }
     
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         filtered = roster.filter({ (text) -> Bool in
@@ -64,9 +80,11 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
             return range.location != NSNotFound
         })
         if(filtered.count == 0){
-            searchActive = false;
+            searchActive = false
+            tableView.hidden = true
         } else {
-            searchActive = true;
+            searchActive = true
+            tableView.hidden = false
         }
         self.tableView.reloadData()
     }
@@ -88,7 +106,9 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         if(searchActive){
-            cell.textLabel?.text = filtered[indexPath.row]
+            if (indexPath.row < filtered.count) {
+                cell.textLabel?.text = filtered[indexPath.row]
+            }
         } else {
             cell.textLabel?.text = roster[indexPath.row];
         }
@@ -100,6 +120,10 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         
         let row = indexPath.row
         selectedMap[roster[row]] = !selectedMap[roster[row]]!
+        self.searchBar.text = roster[row]
+        tableView.hidden = true
+        searchBar.resignFirstResponder()
+        print(sliderSwitch.on)
         print(selectedMap)
     }
     

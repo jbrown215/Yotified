@@ -76,6 +76,20 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let CellIdentifier = "SectionHeader"
+        let headerView = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
+        let label = headerView?.viewWithTag(3) as! UILabel!
+        if (section == 0) {
+            label.text = "At Risk"
+        } else {
+            label.text = "Checked In"
+        }
+        return headerView;
+    }
+    
+    
     @IBAction func unwindToTonightView(segue : UIStoryboardSegue) {
         print ("Unwind to tonight view")
     }
