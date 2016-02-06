@@ -58,6 +58,99 @@ class Server {
         })
     }
     
+    static func genCheckedIn (callback: Array<User> -> Void) {
+        Alamofire.request(.GET, SERVER + "checkedin").responseJSON(
+            options: NSJSONReadingOptions(rawValue: 0),
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback(parseUserListJSON(response.result.value!))
+                } else {
+                    print("genCheckedIn failed with status code " + String(code))
+                }
+        })
+    }
+    
+    static func genReports (callback: Array<Report> -> Void) {
+        Alamofire.request(.GET, SERVER + "reports").responseJSON(
+            options: NSJSONReadingOptions(rawValue: 0),
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback(parseReportListJSON(response.result.value!))
+                } else {
+                    print("genReports failed with status code " + String(code))
+                }
+        })
+    }
+    
+    static func addAdmin (userId: Int, callback: Void -> Void) {
+        Alamofire.request(.POST, SERVER + "addadmin", parameters: ["_id": userId]).responseJSON(
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback ()
+                } else {
+                    print("addAdmin failed with status code " + String(code))
+                }
+        })
+    }
+    
+    static func deleteAdmin (userId: Int, successCallback: Void -> Void, failureCallback: Int -> Void) {
+        Alamofire.request(.POST, SERVER + "deladmin", parameters: ["_id": userId]).responseJSON(
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    successCallback ()
+                } else {
+                    failureCallback (code)
+                }
+        })
+    }
+    
+    static func toggleDuty (userId: Int, successCallback: Void -> Void, failureCallback: Int -> Void) {
+        Alamofire.request(.POST, SERVER + "toggleduty", parameters: ["_id": userId]).responseJSON(
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    successCallback ()
+                } else {
+                    failureCallback (code)
+                }
+        })
+    }
+    
+    static func handleReport (reportId: Int, userId: Int, callback: Void -> Void) {
+        Alamofire.request(.POST, SERVER + "handlereport", parameters: ["_id": reportId, "handler": userId]).responseJSON(
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback ()
+                } else {
+                    print("handleReport failed with status code " + String(code))
+                }
+        })
+    }
+    
+    static func clearReport (reportId: Int, callback: Void -> Void) {
+        Alamofire.request(.POST, SERVER + "clearreport", parameters: ["_id": reportId]).responseJSON(
+            completionHandler: {
+                (response: Response<AnyObject, NSError>) in
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback ()
+                } else {
+                    print("clearReport failed with status code " + String(code))
+                }
+        })
+    }
+    
     //  User Calls
     
     static func checkIn (lat : Float, long : Float, userId : Int) {
@@ -67,14 +160,7 @@ class Server {
             "id": String(userId)
         ]
         
-        Alamofire.request(.POST, SERVER + "checkin", parameters: parameters)/*.responseString(completionHandler: {
-            response in
-            print(response.request)  // original URL request
-            print(response.response) // URL response
-            let dataString = NSString(data: response.data!, encoding:NSUTF8StringEncoding)
-            print(dataString!)
-            print(response.result)   // result of response serialization
-        })*/
+        Alamofire.request(.POST, SERVER + "checkin", parameters: parameters)
     }
     
     static func checkOut (userId :Int) {
