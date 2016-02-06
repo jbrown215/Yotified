@@ -28,6 +28,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var drugLabel : UILabel!
     @IBOutlet var otherLabel : UILabel!
     @IBOutlet var submitButton : UIButton!
+    var reportID : String = ""
     
     let textCellIdentifier = "TextCell"
     
@@ -203,6 +204,10 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func checkbox4Pressed() {
         checkbox4.selected = !checkbox4.selected
+    }
+    
+    @IBAction func submitPressed() {
+        Server.reportInfo(whereTextField.text!, drunk: checkbox2.selected, assault: checkbox3.selected, drugs: checkbox1.selected, other: checkbox4.selected, needs_help: searchBar.text!, reportId: reportID, anon: sliderSwitch.on, senderId: 6102466685)
     }
     /*
     // MARK: - Navigation

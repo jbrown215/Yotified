@@ -34,6 +34,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
   
+    override func viewDidDisappear(animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
     @IBAction func checkIn() {
         print("Checking In");
         if (CLLocationCoordinate2DIsValid(currentLoc)) {
@@ -44,6 +47,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func makeReport() {
+        Server.report(currentLoc.latitude as Double, long: currentLoc.longitude as Double, userId: 6102466685, callback: {
+            report in
+            if let resultController = self.storyboard!.instantiateViewControllerWithIdentifier("REPORT_VIEW") as? ReportViewController {
+                resultController.reportID = report
+                self.showViewController(resultController, sender: self)
+            }
+            
+        })
         print("Making Report!")
     }
     

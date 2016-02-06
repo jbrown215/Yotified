@@ -76,12 +76,12 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (indexPath.section == 1) {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-                resultController.name = checkedInMembers[indexPath.row].name
+                resultController.user = checkedInMembers[indexPath.row]
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         } else {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("AdminViewReportViewController") as? AdminViewReportViewController {
-                resultController.name = atRiskMembers[indexPath.row].name
+                resultController.report = atRiskMembers[indexPath.row]
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }

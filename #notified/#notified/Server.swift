@@ -200,13 +200,13 @@ class Server {
         Alamofire.request(.POST, SERVER + "lowbatt", parameters: parameters)
     }
     
-    static func reportInfo (location: String, drunk: Bool, assault: Bool, drugs: Bool, other: String, needs_help: String, reportId: String, anon: Bool, senderId: Int) {
+    static func reportInfo (location: String, drunk: Bool, assault: Bool, drugs: Bool, other: Bool, needs_help: String, reportId: String, anon: Bool, senderId: Int) {
         let parameters = [
             "location": location,
             "drunk": String(drunk),
             "sa": String(assault),
             "drugs": String(drugs),
-            "other": other,
+            "other": String(other),
             "needs_help": needs_help,
             "anon": String(anon),
             "sender": String(senderId),
@@ -287,7 +287,7 @@ class Server {
         r.drunk = (obj["drunk"] as AnyObject? as? Bool) ?? false
         r.sa = (obj["sa"] as AnyObject? as? Bool) ?? false
         r.drugs = (obj[""] as AnyObject? as? Bool) ?? false
-        r.other = (obj["other"] as AnyObject? as? String) ?? ""
+        r.other = (obj["other"] as AnyObject? as? Bool) ?? false
         r.location = (obj["location"] as AnyObject? as? String) ?? ""
         r.needs_help = (obj["needs_help"] as AnyObject? as? String) ?? ""
         
@@ -329,7 +329,7 @@ class Report {
     var drunk = false
     var sa = false
     var drugs = false
-    var other = ""
+    var other = false
     var location = ""
     var needs_help = ""
 }

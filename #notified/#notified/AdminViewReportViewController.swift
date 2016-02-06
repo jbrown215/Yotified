@@ -13,12 +13,12 @@ class AdminViewReportViewController: UIViewController {
     
     @IBOutlet var label : UILabel!
     
-    var name : String = ""
+    var report : Report = Report()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.label.text = name
+        self.label.text = report.name
 
         // Do any additional setup after loading the view.
     }

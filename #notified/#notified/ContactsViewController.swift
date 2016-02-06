@@ -13,8 +13,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet var tableView : UITableView!
     @IBOutlet var searchBar : UISearchBar!
     
-    var contacts = ["Ben", "Caroline", "Jordan", "Frieder"]
-    var filtered = [String()]
+    var contacts : Array<User> = []
+    var filtered = [User()]
     var searchActive = false
     
     let textCellIdentifier = "TextCell"
@@ -26,6 +26,12 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         searchBar.delegate = self
         // Do any additional setup after loading the view.
+        
+        Server.genRoster({
+            roster in
+            self.contacts = roster
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,8 +59,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filtered = contacts.filter({ (text) -> Bool in
-            let tmp: NSString = text
+        filtered = contacts.filter({ (user) -> Bool in
+            let tmp: NSString = user.name
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
@@ -83,9 +89,9 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         if(searchActive){
-            cell.textLabel?.text = filtered[indexPath.row]
+            cell.textLabel?.text = filtered[indexPath.row].name
         } else {
-            cell.textLabel?.text = contacts[indexPath.row];
+            cell.textLabel?.text = contacts[indexPath.row].name;
         }
         return cell
     }
@@ -94,7 +100,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-            resultController.name = contacts[indexPath.row]
+            resultController.user = contacts[indexPath.row]
             self.navigationController?.pushViewController(resultController, animated: true)
         }
     }

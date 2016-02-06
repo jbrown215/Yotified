@@ -13,12 +13,20 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var label : UILabel!
     @IBOutlet var contactButton : UIButton!
     @IBOutlet var addressLabel : UILabel!
+    @IBOutlet var statusLabel : UILabel!
     
-    var name : String = ""
+    var user : User = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = name
+        label.text = user.name
+        contactButton.setTitle(String(user.phone), forState: UIControlState.Normal)
+        if user.checkedin {
+            statusLabel.text = "Checked In"
+        } else {
+            statusLabel.text = "Checked Out"
+        }
+        //addressLabel.text = user.
 
         // Do any additional setup after loading the view.
     }

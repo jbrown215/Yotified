@@ -63,7 +63,7 @@
                                         <rect key="frame" x="0.0" y="28" width="273" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAa-CX-KMR" id="Lbd-mm-6ft">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Kt-Df-Fsg">
@@ -83,11 +83,11 @@
                                         <rect key="frame" x="0.0" y="72" width="273" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn9-Dd-HxX" id="4yr-Fb-spL">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhF-lK-EAt">
-                                                    <rect key="frame" x="15" y="0.0" width="243" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="243" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
@@ -353,7 +353,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="makeReport" destination="BYZ-38-t0r" eventType="touchUpInside" id="RwU-hI-2Pc"/>
-                                    <segue destination="5mw-78-VLz" kind="modal" id="sAM-5p-C8R"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="pae-Vo-R37">
@@ -393,7 +392,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="makeReport" destination="Wz8-KU-MsG" eventType="touchUpInside" id="LG9-Tp-hVR"/>
-                                    <segue destination="5mw-78-VLz" kind="modal" id="AHl-Pi-AFL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KX1-6k-CS2">
@@ -444,7 +442,7 @@
         <!--Report View Controller-->
         <scene sceneID="TGn-eP-Lbg">
             <objects>
-                <viewController id="5mw-78-VLz" customClass="ReportViewController" customModule="_notified" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="REPORT_VIEW" id="5mw-78-VLz" customClass="ReportViewController" customModule="_notified" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nmq-os-lXb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,7 +465,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="checkbox1Pressed" destination="5mw-78-VLz" eventType="touchUpInside" id="aid-a8-lxM"/>
+                                            <action selector="submitPressed" destination="5mw-78-VLz" eventType="touchUpInside" id="8d2-cW-U3K"/>
                                             <segue destination="6ca-xU-ncu" kind="modal" identifier="POST_REPORT" modalTransitionStyle="partialCurl" id="Nzi-M8-aCp"/>
                                         </connections>
                                     </button>
@@ -546,11 +544,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="270" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Mb-i4-LOk" id="svu-84-ZHK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b19-Ng-bsy">
-                                                            <rect key="frame" x="15" y="0.0" width="240" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="240" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -734,11 +732,11 @@
                                         <rect key="frame" x="0.0" y="92" width="273" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LDt-qV-oHV" id="kxw-tI-CVF">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hTA-Hn-BP8">
-                                                    <rect key="frame" x="15" y="0.0" width="243" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="243" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.61960784310000006" green="0.73333333329999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="20"/>
@@ -919,8 +917,5 @@
         <image name="tongggight.png" width="11" height="27"/>
         <image name="unchecked.png" width="71" height="71"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sAM-5p-C8R"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
