@@ -34,6 +34,22 @@
 		D981DEC51C66544700538B4B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D981DEC41C66544700538B4B /* logo.png */; };
 		D981DEC81C66557600538B4B /* backgroundcheck.png in Resources */ = {isa = PBXBuildFile; fileRef = D981DEC71C66557600538B4B /* backgroundcheck.png */; };
 		D99510631C6685D60063499E /* settingsinactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510621C6685D60063499E /* settingsinactive.png */; };
+		D99510651C668F600063499E /* phonecontact.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510641C668F600063499E /* phonecontact.png */; };
+		D99510671C668F640063499E /* housecontact.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510661C668F640063499E /* housecontact.png */; };
+		D99510761C6693C50063499E /* backgroundcheck.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510681C6693C50063499E /* backgroundcheck.png */; };
+		D99510771C6693C50063499E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510691C6693C50063499E /* check.png */; };
+		D99510781C6693C50063499E /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106A1C6693C50063499E /* home.png */; };
+		D99510791C6693C50063499E /* housecontact.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106B1C6693C50063499E /* housecontact.png */; };
+		D995107A1C6693C50063499E /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106C1C6693C50063499E /* phone.png */; };
+		D995107B1C6693C50063499E /* phoneactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106D1C6693C50063499E /* phoneactive.png */; };
+		D995107C1C6693C50063499E /* phonecontact.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106E1C6693C50063499E /* phonecontact.png */; };
+		D995107D1C6693C50063499E /* phoneinactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D995106F1C6693C50063499E /* phoneinactive.png */; };
+		D995107E1C6693C50063499E /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510701C6693C50063499E /* settings.png */; };
+		D995107F1C6693C50063499E /* settingsactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510711C6693C50063499E /* settingsactive.png */; };
+		D99510801C6693C50063499E /* settingsinactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510721C6693C50063499E /* settingsinactive.png */; };
+		D99510811C6693C50063499E /* tonight.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510731C6693C50063499E /* tonight.png */; };
+		D99510821C6693C50063499E /* tonightactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510741C6693C50063499E /* tonightactive.png */; };
+		D99510831C6693C50063499E /* tonightinactive.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510751C6693C50063499E /* tonightinactive.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +214,22 @@
 		D981DEC71C66557600538B4B /* backgroundcheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundcheck.png; sourceTree = "<group>"; };
 		D981DEC91C665BCE00538B4B /* Muli-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Regular.ttf"; sourceTree = "<group>"; };
 		D99510621C6685D60063499E /* settingsinactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsinactive.png; sourceTree = "<group>"; };
+		D99510641C668F600063499E /* phonecontact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phonecontact.png; sourceTree = "<group>"; };
+		D99510661C668F640063499E /* housecontact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = housecontact.png; sourceTree = "<group>"; };
+		D99510681C6693C50063499E /* backgroundcheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundcheck.png; sourceTree = "<group>"; };
+		D99510691C6693C50063499E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		D995106A1C6693C50063499E /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		D995106B1C6693C50063499E /* housecontact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = housecontact.png; sourceTree = "<group>"; };
+		D995106C1C6693C50063499E /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		D995106D1C6693C50063499E /* phoneactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phoneactive.png; sourceTree = "<group>"; };
+		D995106E1C6693C50063499E /* phonecontact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phonecontact.png; sourceTree = "<group>"; };
+		D995106F1C6693C50063499E /* phoneinactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phoneinactive.png; sourceTree = "<group>"; };
+		D99510701C6693C50063499E /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		D99510711C6693C50063499E /* settingsactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsactive.png; sourceTree = "<group>"; };
+		D99510721C6693C50063499E /* settingsinactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsinactive.png; sourceTree = "<group>"; };
+		D99510731C6693C50063499E /* tonight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tonight.png; sourceTree = "<group>"; };
+		D99510741C6693C50063499E /* tonightactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tonightactive.png; sourceTree = "<group>"; };
+		D99510751C6693C50063499E /* tonightinactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tonightinactive.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +352,22 @@
 			isa = PBXGroup;
 			children = (
 				D921200F1C6674F80075408D /* unchecked.png */,
+				D99510661C668F640063499E /* housecontact.png */,
+				D99510681C6693C50063499E /* backgroundcheck.png */,
+				D99510691C6693C50063499E /* check.png */,
+				D995106A1C6693C50063499E /* home.png */,
+				D995106B1C6693C50063499E /* housecontact.png */,
+				D995106C1C6693C50063499E /* phone.png */,
+				D995106D1C6693C50063499E /* phoneactive.png */,
+				D995106E1C6693C50063499E /* phonecontact.png */,
+				D995106F1C6693C50063499E /* phoneinactive.png */,
+				D99510701C6693C50063499E /* settings.png */,
+				D99510711C6693C50063499E /* settingsactive.png */,
+				D99510721C6693C50063499E /* settingsinactive.png */,
+				D99510731C6693C50063499E /* tonight.png */,
+				D99510741C6693C50063499E /* tonightactive.png */,
+				D99510751C6693C50063499E /* tonightinactive.png */,
+				D99510641C668F600063499E /* phonecontact.png */,
 				D99510621C6685D60063499E /* settingsinactive.png */,
 				D92120031C6674F20075408D /* checked.png */,
 				D981DEC91C665BCE00538B4B /* Muli-Regular.ttf */,
@@ -547,14 +595,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				279D69641C667BC6003101F9 /* Muli-Regular.ttf in Resources */,
+				D995107A1C6693C50063499E /* phone.png in Resources */,
 				279D69651C667BC6003101F9 /* DINAlternate.ttf in Resources */,
+				D99510771C6693C50063499E /* check.png in Resources */,
+				D99510791C6693C50063499E /* housecontact.png in Resources */,
 				D981DEC51C66544700538B4B /* logo.png in Resources */,
 				2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */,
 				2799B3EC1C658B4600F4DA9D /* Assets.xcassets in Resources */,
 				D92120041C6674F20075408D /* checked.png in Resources */,
 				2799B3EA1C658B4600F4DA9D /* Main.storyboard in Resources */,
+				D99510671C668F640063499E /* housecontact.png in Resources */,
+				D995107C1C6693C50063499E /* phonecontact.png in Resources */,
 				D981DEC81C66557600538B4B /* backgroundcheck.png in Resources */,
+				D99510821C6693C50063499E /* tonightactive.png in Resources */,
+				D99510761C6693C50063499E /* backgroundcheck.png in Resources */,
+				D99510801C6693C50063499E /* settingsinactive.png in Resources */,
+				D99510831C6693C50063499E /* tonightinactive.png in Resources */,
+				D99510781C6693C50063499E /* home.png in Resources */,
+				D995107E1C6693C50063499E /* settings.png in Resources */,
+				D99510651C668F600063499E /* phonecontact.png in Resources */,
 				D92120101C6674F80075408D /* unchecked.png in Resources */,
+				D99510811C6693C50063499E /* tonight.png in Resources */,
+				D995107D1C6693C50063499E /* phoneinactive.png in Resources */,
+				D995107B1C6693C50063499E /* phoneactive.png in Resources */,
+				D995107F1C6693C50063499E /* settingsactive.png in Resources */,
 				D99510631C6685D60063499E /* settingsinactive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
