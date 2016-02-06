@@ -19,10 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         // Server.checkIn(40.445410, long: -79.942572, id: 6102466685)
-        Server.pingServer()
-        let printName = { (result: Array<User>) -> Void in
-            print("RISK MANAGED") }
-        Server.genRoster(printName)
+        //Server.pingServer()
+        //let printName = { (result: Array<User>) -> Void in
+        //    print("RISK MANAGED") }
+        //Server.genRoster(printName)
+        Server.register("Jordan Brown", phone: 5612127815, username: "jbrown", pword: "penises",
+            successCallback: {
+                user in print("successcall")
+                Server.login("jbrown", pword: "penises", successCallback: { user in print("successcall") }, failCallback: {code in print("failcall " + String(code))})
+            },
+            failCallback: {code in print("failcall " + String(code))})
+        
         return true
     }
 

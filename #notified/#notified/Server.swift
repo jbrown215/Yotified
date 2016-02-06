@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import UIKit
+import CryptoSwift
 
 class Server {
     static let SERVER = "http://3ff619ec.ngrok.io/"
@@ -18,6 +19,7 @@ class Server {
             response in
             print(response.request)  // original URL request
             print(response.response) // URL response
+            print(response.response!.statusCode)
             let dataString = NSString(data: response.data!, encoding:NSUTF8StringEncoding)
             print(dataString!)
             print(response.result)   // result of response serialization
@@ -34,7 +36,12 @@ class Server {
             options: NSJSONReadingOptions(rawValue: 0),
             completionHandler: {
             (response: Response<AnyObject, NSError>) in
-                callback(parseUserListJSON(response.result.value!))
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback(parseUserListJSON(response.result.value!))
+                } else {
+                    print("genRoster failed with status code " + String(code))
+                }
         })
     }
     
@@ -42,7 +49,12 @@ class Server {
         Alamofire.request(.GET, SERVER + "admins").responseJSON(
             completionHandler: {
                 (response: Response<AnyObject, NSError>) in
-                callback(parseUserListJSON(response.result.value!))
+                let code = response.response!.statusCode
+                if code == 200 {
+                    callback(parseUserListJSON(response.result.value!))
+                } else {
+                    print("genAdmins failed with status code " + String(code))
+                }
         })
     }
     
@@ -79,7 +91,14 @@ class Server {
             "_id": String(userId)]
         
         Alamofire.request(.POST, SERVER + "report", parameters: parameters).responseJSON(completionHandler: {
-            response in callback(parseReportJSON(response.result.value!)._id) })
+            response in
+            let code = response.response!.statusCode
+            if code == 200 {
+                callback(parseReportJSON(response.result.value!)._id)
+            } else {
+                print("report failed with status code " + String(code))
+            }
+        })
     }
 
     static func lowBattery (lat: Double, long: Double, userId: Int) {
@@ -99,17 +118,41 @@ class Server {
         Alamofire.request(.POST, SERVER + "reportinfo", parameters: parameters)
     }
     
-    static func register (name: String, phone: Int, username: String, pword: String, callback: User -> Void) {
+    static func register (name: String, phone: Int, username: String, pword: String, successCallback: User -> Void, failCallback: Int -> Void) {
         let parameters = [
             "name": name,
             "phone": String(phone),
             "username": username,
-            "password": pword, // BAD BAD BAD BAD
+            "password": pword.sha224(),
             "token": UIDevice.currentDevice().identifierForVendor!.UUIDString
         ]
         
         Alamofire.request(.POST, SERVER + "register", parameters: parameters).responseJSON(completionHandler: {
-            response in callback(parseUserJSON(response.result.value!)) })
+            response in
+            let code = response.response!.statusCode
+            if code == 200 {
+                successCallback(parseUserJSON(response.result.value!))
+            } else {
+                failCallback(code)
+            }
+        })
+    }
+    
+    static func login (username: String, pword: String, successCallback: User -> Void, failCallback: Int -> Void) {
+        let parameters = [
+            "username": username,
+            "password": pword.sha224()
+        ]
+        
+        Alamofire.request(.POST, SERVER + "login", parameters: parameters).responseJSON(completionHandler: {
+            response in
+            let code = response.response!.statusCode
+            if code == 200 {
+                successCallback(parseUserJSON(response.result.value!))
+            } else {
+                failCallback(code)
+            }
+        })
     }
     // JSON Parsing
     
