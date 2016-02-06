@@ -24,8 +24,17 @@ class Server {
         })
     }
     
-    static func roster () {
-        Alamofire.request(.GET, SERVER + "roster").responseString(completionHandler: {
+    static func genRoster () {
+        Alamofire.request(.GET, SERVER + "roster").responseJSON(completionHandler: {
+            (response: Response<AnyObject, NSError>) in
+            var error : NSError?
+            //let anyObj: AnyObject? = NSJSONSerialization.JSONObjectWithData(response.data ?? nil, options: NSJSONReadingOptions(0))
+            print(response.data)
+        })
+    }
+    
+    static func genAdmins () {
+        Alamofire.request(.GET, SERVER + "admins").responseString(completionHandler: {
             response in
             print(response.request)  // original URL request
             print(response.response) // URL response
@@ -35,8 +44,14 @@ class Server {
         })
     }
     
-    static func admins () {
-        Alamofire.request(.GET, SERVER + "admins").responseString(completionHandler: {
+    static func checkIn (lat : Float, long : Float, id : Int) {
+        let parameters = [
+            "lat": String(lat),
+            "long": String(long),
+            "id": String(id)
+        ]
+        
+        Alamofire.request(.POST, SERVER + "checkin", parameters: parameters).responseString(completionHandler: {
             response in
             print(response.request)  // original URL request
             print(response.response) // URL response

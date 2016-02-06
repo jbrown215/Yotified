@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        Server.admins()
+        // Server.checkIn(40.445410, long: -79.942572, id: 6102466685)
+        Server.genRoster()
         return true
     }
 
