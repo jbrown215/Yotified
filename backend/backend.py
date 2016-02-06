@@ -105,7 +105,7 @@ def report():
     'drunk': False,
     'drugs': False,
     'sa': False,
-    'other': ''
+    'other': False
   }
   report_id = Report.insert_one(report).inserted_id
   msg = "A new report has been opened!"
