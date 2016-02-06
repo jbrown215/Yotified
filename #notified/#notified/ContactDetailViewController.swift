@@ -11,6 +11,8 @@ import UIKit
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet var label : UILabel!
+    @IBOutlet var contactButton : UIButton!
+    @IBOutlet var addressLabel : UILabel!
     
     var name : String = ""
 
@@ -26,7 +28,10 @@ class ContactDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @IBAction func makeCall() {
+        let phoneNumber = "telprompt://"  + contactButton.titleLabel!.text!
+        UIApplication.sharedApplication().openURL(NSURL(string: phoneNumber)!)
+    }
 
     /*
     // MARK: - Navigation
