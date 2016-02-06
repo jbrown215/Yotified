@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var tableView : UITableView!
+    @IBOutlet var searchBar : UISearchBar!
     
     var contacts = ["Ben", "Caroline", "Jordan", "Frieder"]
     var filtered = [String()]
@@ -21,9 +22,9 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self;
+        tableView.delegate = self
         tableView.dataSource = self
-
+        searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -33,6 +34,38 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
 
+    // MARK: - Search bar protocol methods
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered = contacts.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Tableview protocol methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
