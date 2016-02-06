@@ -14,36 +14,42 @@ USER:
     /report
       lat: latitude of current location (as str)
       long: longitude of current location (as str)
+      anon: does user want it to be anonymous?
       id: user's id as str
       RETURNS
-        id: id of request
+        id: id of report
     /lowbatt
       lat: latitude of current location (as str)
       long: longitude of current location (as str)
       id: user's id as str
     /reportinfo
       data: str of all user's info
-      id: requests id as str
+      id: reports id as str
 
 ADMIN:
   GET:
     /roster
-      name: duh
-      phone: phone number (as str)
-      lat: latitude of last location (as str)
-      long: longitude of last location (as str)
-      checkedin: bool of whether user is checked in or not
+      roster: (list of)
+        name: duh
+        id: user's id as str
+        phone: phone number (as str)
+        lat: latitude of last location (as str)
+        long: longitude of last location (as str)
+        checkedin: bool of whether user is checked in or not
     /admins
-      name: duh
-      phone: phone number
-      duty: on duty status
-    /requests
-      id: unique id for request (int)
-      sender: unique id for requester (null if anonymous)
-      handler: unique id for admin handler (null if not yet handled)
-      lat: latitude of current location (as str)
-      long: longitude of current location (as str)
-      data: str of user's info
+      admins: (list of)
+        id = user's id as str
+        name: duh
+        phone: phone number
+    /reports
+      reports: (list of)
+        id: unique id for report (int)
+        name: name of the report (str)
+        sender: unique id for reporter (null if anonymous)
+        handler: unique id for admin handler (null if not yet handled)
+        lat: latitude of current location (as str)
+        long: longitude of current location (as str)
+        data: str of user's info
 
   POST:
     /addadmin
@@ -52,10 +58,10 @@ ADMIN:
       id: (user's phone number)
     /toggleduty
       id: (user's phone number)
-    /handlerequest
-      id: id of request
+    /handlereport
+      id: id of report
       handler: id of handler (str)
-    /clearrequest
-      id: id of request
+    /clearreport
+      id: id of report
       (Can only be reached by handler)
 
