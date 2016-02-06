@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var button : UIButton?
     
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
-    @IBAction func doSomething() {
+    @IBAction func checkIn() {
         print("Test");
     }
 
