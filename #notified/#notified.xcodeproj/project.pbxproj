@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194D44B31C65A5F70080C653 /* CheckedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D44B21C65A5F70080C653 /* CheckedInViewController.swift */; };
 		2799B3E51C658B4600F4DA9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B3E41C658B4600F4DA9D /* AppDelegate.swift */; };
-		2799B3E71C658B4600F4DA9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B3E61C658B4600F4DA9D /* ViewController.swift */; };
+		2799B3E71C658B4600F4DA9D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2799B3E61C658B4600F4DA9D /* HomeViewController.swift */; };
 		2799B3EA1C658B4600F4DA9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2799B3E81C658B4600F4DA9D /* Main.storyboard */; };
 		2799B3EC1C658B4600F4DA9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2799B3EB1C658B4600F4DA9D /* Assets.xcassets */; };
 		2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2799B3ED1C658B4600F4DA9D /* LaunchScreen.storyboard */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		194D44B21C65A5F70080C653 /* CheckedInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckedInViewController.swift; sourceTree = "<group>"; };
 		2799B3E11C658B4600F4DA9D /* #notified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "#notified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2799B3E41C658B4600F4DA9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2799B3E61C658B4600F4DA9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2799B3E61C658B4600F4DA9D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2799B3E91C658B4600F4DA9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2799B3EB1C658B4600F4DA9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2799B3EE1C658B4600F4DA9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				2799B3E41C658B4600F4DA9D /* AppDelegate.swift */,
-				2799B3E61C658B4600F4DA9D /* ViewController.swift */,
+				2799B3E61C658B4600F4DA9D /* HomeViewController.swift */,
+				194D44B21C65A5F70080C653 /* CheckedInViewController.swift */,
 				2799B3E81C658B4600F4DA9D /* Main.storyboard */,
 				2799B3EB1C658B4600F4DA9D /* Assets.xcassets */,
 				2799B3ED1C658B4600F4DA9D /* LaunchScreen.storyboard */,
@@ -193,6 +196,18 @@
 				TargetAttributes = {
 					2799B3E01C658B4600F4DA9D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = MCE3J42D83;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2799B3F41C658B4600F4DA9D = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -256,7 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2799B3E71C658B4600F4DA9D /* ViewController.swift in Sources */,
+				194D44B31C65A5F70080C653 /* CheckedInViewController.swift in Sources */,
+				2799B3E71C658B4600F4DA9D /* HomeViewController.swift in Sources */,
 				2799B3E51C658B4600F4DA9D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,10 +413,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "#notified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.woosufjordaline.-notified";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -408,10 +428,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "#notified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.woosufjordaline.-notified";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -482,6 +506,7 @@
 				2799B40B1C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2799B40C1C658B4600F4DA9D /* Build configuration list for PBXNativeTarget "#notifiedTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +515,7 @@
 				2799B40E1C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2799B40F1C658B4600F4DA9D /* Build configuration list for PBXNativeTarget "#notifiedUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +524,7 @@
 				2799B4111C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
