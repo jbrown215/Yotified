@@ -11,8 +11,7 @@ import UIKit
 class TonightViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    @IBOutlet var tableViewAtRisk : UITableView!
-    @IBOutlet var tableViewCheckedIn : UITableView!
+    @IBOutlet var tableView : UITableView!
     
     var checkedInMembers = ["Jordan", "Caroline", "Frieder", "Ben"]
     var atRiskMembers = ["Ben"]
@@ -22,11 +21,9 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewAtRisk.delegate = self;
-        tableViewAtRisk.dataSource = self
+        tableView.delegate = self;
+        tableView.dataSource = self
 
-        tableViewCheckedIn.delegate = self;
-        tableViewCheckedIn.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +37,7 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Tableview protocol methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (tableView == tableViewAtRisk) {
+        if (section == 0) {
             return atRiskMembers.count
         } else {
             return checkedInMembers.count
@@ -48,14 +45,14 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        if (tableView == tableViewCheckedIn) {
-            cell.textLabel?.text = checkedInMembers[indexPath.row]
+        if (indexPath.row >= atRiskMembers.count) {
+            cell.textLabel?.text = checkedInMembers[indexPath.row - atRiskMembers.count]
         } else {
             cell.textLabel?.text = atRiskMembers[indexPath.row]
         }
@@ -66,9 +63,9 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if (tableView == tableViewCheckedIn) {
+        if (indexPath.row >= atRiskMembers.count) {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-                resultController.name = checkedInMembers[indexPath.row]
+                resultController.name = checkedInMembers[indexPath.row - atRiskMembers.count]
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         } else {
