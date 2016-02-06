@@ -20,6 +20,10 @@
 		27AA7A9E1C65AE490054C45F /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA7A901C65AC470054C45F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27AA7AA31C65AFA00054C45F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AA7AA21C65AFA00054C45F /* Server.swift */; };
 		27C422541C65C37A005AE50F /* PostReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C422531C65C37A005AE50F /* PostReportViewController.swift */; };
+		27C4225C1C66133D005AE50F /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4225B1C66133D005AE50F /* ContactsViewController.swift */; };
+		27C4225E1C6616CA005AE50F /* TonightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4225D1C6616CA005AE50F /* TonightViewController.swift */; };
+		27C422601C661A69005AE50F /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4225F1C661A69005AE50F /* ContactDetailViewController.swift */; };
+		27C422641C662E3A005AE50F /* AdminViewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C422631C662E3A005AE50F /* AdminViewReportViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +132,10 @@
 		27AA7A851C65AC470054C45F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		27AA7AA21C65AFA00054C45F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		27C422531C65C37A005AE50F /* PostReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportViewController.swift; sourceTree = "<group>"; };
+		27C4225B1C66133D005AE50F /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		27C4225D1C6616CA005AE50F /* TonightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonightViewController.swift; sourceTree = "<group>"; };
+		27C4225F1C661A69005AE50F /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		27C422631C662E3A005AE50F /* AdminViewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewReportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,12 +192,16 @@
 				2799B3E61C658B4600F4DA9D /* HomeViewController.swift */,
 				194D44B21C65A5F70080C653 /* CheckedInViewController.swift */,
 				2799B3E81C658B4600F4DA9D /* Main.storyboard */,
+				27C4225F1C661A69005AE50F /* ContactDetailViewController.swift */,
+				27C4225D1C6616CA005AE50F /* TonightViewController.swift */,
+				27C4225B1C66133D005AE50F /* ContactsViewController.swift */,
 				27AA7AA21C65AFA00054C45F /* Server.swift */,
 				194D44B41C65A92B0080C653 /* ReportViewController.swift */,
 				2799B3EB1C658B4600F4DA9D /* Assets.xcassets */,
 				2799B3ED1C658B4600F4DA9D /* LaunchScreen.storyboard */,
 				2799B3F01C658B4600F4DA9D /* Info.plist */,
 				27C422531C65C37A005AE50F /* PostReportViewController.swift */,
+				27C422631C662E3A005AE50F /* AdminViewReportViewController.swift */,
 			);
 			path = "#notified";
 			sourceTree = "<group>";
@@ -430,11 +442,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				27AA7AA31C65AFA00054C45F /* Server.swift in Sources */,
+				27C4225C1C66133D005AE50F /* ContactsViewController.swift in Sources */,
+				27C4225E1C6616CA005AE50F /* TonightViewController.swift in Sources */,
 				194D44B51C65A92B0080C653 /* ReportViewController.swift in Sources */,
+				27C422601C661A69005AE50F /* ContactDetailViewController.swift in Sources */,
 				194D44B31C65A5F70080C653 /* CheckedInViewController.swift in Sources */,
 				2799B3E71C658B4600F4DA9D /* HomeViewController.swift in Sources */,
 				27C422541C65C37A005AE50F /* PostReportViewController.swift in Sources */,
 				2799B3E51C658B4600F4DA9D /* AppDelegate.swift in Sources */,
+				27C422641C662E3A005AE50F /* AdminViewReportViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

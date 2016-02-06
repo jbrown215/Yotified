@@ -38,6 +38,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
     // MARK: - Search bar protocol methods
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
@@ -100,6 +101,14 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         let row = indexPath.row
         selectedMap[roster[row]] = !selectedMap[roster[row]]!
         print(selectedMap)
+    }
+    
+    @IBAction func dismissModal(segue:UIStoryboardSegue) {
+        print ("Unwindeded")
+    }
+    
+    @IBAction func onBackPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 
