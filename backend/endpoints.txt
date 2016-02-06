@@ -25,6 +25,30 @@ USER:
     /reportinfo
       data: str of all user's info
       _id: reports id as str
+    /register
+      name: user's name
+      phone: str
+      username: user's login
+      password: SHA-3 hash of user's password
+      token: user's device id token
+      Returns
+        phone: user's phone number as str
+        name: user's name
+        admin: whether the user's an admin or not
+        _id: user's id as str
+      Raises:
+        400 if phone number already attached to account
+        400 if username already used
+    /login
+      username: user's login
+      password: SHA-3 hash of user's password
+      Returns:
+        phone: user's phone number as str
+        name: user's name
+        admin: whether the user's an admin or not
+        _id: user's id as str
+      Raises:
+        401 if user not found
 
 ADMIN:
   GET:
@@ -63,8 +87,12 @@ ADMIN:
       _id: (user's phone number)
     /deladmin
       _id: (user's phone number)
+      Raises:
+        406 if last admin
     /toggleduty
       _id: (user's phone number)
+      Raises:
+        406 if last admin and trying to toggle self
     /handlereport
       _id: id of report
       handler: id of handler (str)

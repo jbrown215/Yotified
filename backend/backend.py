@@ -12,6 +12,8 @@ User = client.app.user
 User.drop()
 Report = client.app.report
 Report.drop()
+Account = client.app.account
+Account.drop()
 
 afrieder = {
   'name': "Alex Frieder",
@@ -149,13 +151,47 @@ def toggleduty():
 
 @app.route('/handlereport', methods=['POST'])
 def handlereport():
-  print Report.update_one({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
+  Report.update_one({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
   return ''
 
 @app.route('/clearreport', methods=['POST'])
 def clearreport():
   Report.delete_one({'_id': ObjectId(request.form['_id'])})
   return ''
+
+@app.route('/register', methods=['POST'])
+def register():
+  if Account.count({'_id': request.form['phone']}) > 0:
+    return 'Phone number already registered.', status.HTTP_400_BAD_REQUEST
+  if Accout.count({'username': request.form['username']}) > 0:
+    return 'Username already in user.', status.HTTP_400_BAD_REQUEST
+  account = {
+    '_id': request.form['phone'],
+    'username': request.form['username'],
+    'password': request.form['password']
+  }
+  Account.insert_one(account)
+  user = {
+    '_id': request.form['phone'],
+    'name': request.form['name'],
+    'phone': request.form['phone'],
+    'lat': None,
+    'long': None,
+    'admin': None,
+    'checkedin': None,
+    'token': request.form['token']
+  }
+  User.insert_one(user)
+  keys = ['phone', 'name', 'admin', '_id']
+  return jsonify({key: user[key] for key in keys})
+
+@app.route('/login', methods=['POST'])
+def login():
+  account = Account.find_one({'username': request.form['username'], 'password': request.form['password']}, projection=['_id'])
+  if account is None:
+    return 'Account not found.', status.HTTP_401_UNAUTHORIZED
+  user = User.find_one({'_id': account['_id']}, projection=['phone', 'name', 'admin', '_id'])
+  return jsonify(user)
 
 if __name__ == '__main__':
     app.run(debug=True)
