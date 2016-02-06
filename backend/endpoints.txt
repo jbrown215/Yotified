@@ -28,6 +28,13 @@ USER:
 
 ADMIN:
   GET:
+    /checkedin
+      roster: (list of)
+        name: duh
+        id: user's id as str
+        phone: phone number (as str)
+        lat: latitude of last location (as str)
+        long: longitude of last location (as str)
     /roster
       roster: (list of)
         name: duh
