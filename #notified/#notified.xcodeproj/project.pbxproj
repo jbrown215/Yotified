@@ -193,6 +193,18 @@
 				TargetAttributes = {
 					2799B3E01C658B4600F4DA9D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = MCE3J42D83;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2799B3F41C658B4600F4DA9D = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -397,10 +409,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "#notified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.woosufjordaline.-notified";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -408,10 +424,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "#notified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.woosufjordaline.-notified";
+				PRODUCT_BUNDLE_IDENTIFIER = com.woosufjordaline.notified;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -482,6 +502,7 @@
 				2799B40B1C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2799B40C1C658B4600F4DA9D /* Build configuration list for PBXNativeTarget "#notifiedTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +511,7 @@
 				2799B40E1C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2799B40F1C658B4600F4DA9D /* Build configuration list for PBXNativeTarget "#notifiedUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +520,7 @@
 				2799B4111C658B4600F4DA9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
