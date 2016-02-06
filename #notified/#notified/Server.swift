@@ -288,6 +288,8 @@ class Server {
         r.sa = (obj["sa"] as AnyObject? as? Bool) ?? false
         r.drugs = (obj[""] as AnyObject? as? Bool) ?? false
         r.other = (obj["other"] as AnyObject? as? String) ?? ""
+        r.location = (obj["location"] as AnyObject? as? String) ?? ""
+        r.needs_help = (obj["needs_help"] as AnyObject? as? String) ?? ""
         
         return r
     }
@@ -328,6 +330,8 @@ class Report {
     var sa = false
     var drugs = false
     var other = ""
+    var location = ""
+    var needs_help = ""
 }
 
 
