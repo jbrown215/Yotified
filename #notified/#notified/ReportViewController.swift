@@ -1,5 +1,5 @@
 //
-//  CheckedInViewController.swift
+//  ReportViewController.swift
 //  #notified
 //
 //  Created by Benjamin Lichtman on 2/5/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckedInViewController: UIViewController {
+class ReportViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,6 @@ class CheckedInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func checkOut() {
-        print("I'm Home!");
-    }
 
     /*
     // MARK: - Navigation

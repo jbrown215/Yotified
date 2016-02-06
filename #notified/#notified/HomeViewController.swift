@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     }
   
     @IBAction func checkIn() {
-        print("Test");
+        print("Checking In");
     }
 
 }
