@@ -311,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NE4-vV-BRg">
-                                <rect key="frame" x="0.0" y="236" width="320" height="231"/>
+                                <rect key="frame" x="0.0" y="420" width="320" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -334,11 +334,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" id="LVP-9u-TrQ">
-                                <rect key="frame" x="0.0" y="169" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <navigationBar contentMode="scaleToFill" id="7x7-jO-pmO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -365,12 +360,29 @@
                                     <segue destination="6ca-xU-ncu" kind="modal" identifier="POST_REPORT" modalTransitionStyle="partialCurl" id="Nzi-M8-aCp"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="fmn-dy-Fqv">
+                                <rect key="frame" x="251" y="83" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Where" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="5CI-1J-PbC">
+                                <rect key="frame" x="112" y="236" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <searchBar contentMode="redraw" id="LVP-9u-TrQ">
+                                <rect key="frame" x="0.0" y="376" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="LVP-9u-TrQ" id="3yq-kd-MqR"/>
+                        <outlet property="sliderSwitch" destination="fmn-dy-Fqv" id="d6V-p0-3f2"/>
                         <outlet property="tableView" destination="NE4-vV-BRg" id="rWg-Wa-7yv"/>
+                        <outlet property="whereTextField" destination="5CI-1J-PbC" id="99E-cX-ptE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AzQ-ef-8WP" userLabel="First Responder" sceneMemberID="firstResponder"/>
