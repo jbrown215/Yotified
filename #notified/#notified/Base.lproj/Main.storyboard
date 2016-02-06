@@ -266,7 +266,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
                                                 <connections>
-                                                    <action selector="onBackPressed" destination="5mw-78-VLz" eventType="touchDragInside" id="xZS-0C-Qov"/>
+                                                    <action selector="onBackPressed" destination="5mw-78-VLz" eventType="touchUpInside" id="0NF-VJ-kuk"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -306,7 +306,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Ok"/>
                                 <connections>
-                                    <segue destination="FqY-Pu-gbL" kind="unwind" unwindAction="unwindToCheckin:" id="GLe-mc-qAI"/>
+                                    <segue destination="FqY-Pu-gbL" kind="unwind" unwindAction="dismissModal:" id="6L8-Uu-Bd8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BeQ-O2-VDo">
