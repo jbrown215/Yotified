@@ -65,6 +65,7 @@ class Server {
                 (response: Response<AnyObject, NSError>) in
                 let code = response.response!.statusCode
                 if code == 200 {
+                    print("it worked")
                     callback(parseUserListJSON(response.result.value!))
                 } else {
                     print("genCheckedIn failed with status code " + String(code))
@@ -153,11 +154,11 @@ class Server {
     
     //  User Calls
     
-    static func checkIn (lat : Float, long : Float, userId : Int) {
+    static func checkIn (lat : Double, long : Double, userId : Int) {
         let parameters = [
             "lat": String(lat),
             "long": String(long),
-            "id": String(userId)
+            "_id": String(userId)
         ]
         
         Alamofire.request(.POST, SERVER + "checkin", parameters: parameters)
@@ -169,11 +170,10 @@ class Server {
         Alamofire.request(.POST, SERVER + "checkout", parameters: parameters)
     }
     
-    static func report (lat: Double, long: Double, anon: Bool, userId: Int, callback: Int -> Void) {
+    static func report (lat: Double, long: Double, userId: Int, callback: Int -> Void) {
         let parameters = [
             "lat": String(lat),
             "long": String(long),
-            "anon": String(anon),
             "_id": String(userId)]
         
         Alamofire.request(.POST, SERVER + "report", parameters: parameters).responseJSON(completionHandler: {
@@ -196,12 +196,16 @@ class Server {
         Alamofire.request(.POST, SERVER + "lowbatt", parameters: parameters)
     }
     
-    static func reportInfo (data: String, reportId: Int) {
+    static func reportInfo (location: String, going_on: Array<String>, needs_help: String, reportId: Int, anon: Bool, senderId: Int) {
         let parameters = [
-            "data": data,
+            "location": location,
+            "going_on": going_on,
+            "needs_help": needs_help,
+            "anon": String(anon),
+            "sender": String(senderId),
             "_id": String(reportId)]
         
-        Alamofire.request(.POST, SERVER + "reportinfo", parameters: parameters)
+        Alamofire.request(.POST, SERVER + "reportinfo", parameters: (parameters as! [String : AnyObject]))
     }
     
     static func register (name: String, phone: Int, username: String, pword: String, successCallback: User -> Void, failCallback: Int -> Void) {
