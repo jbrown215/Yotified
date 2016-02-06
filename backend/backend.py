@@ -12,12 +12,12 @@ User = client.app.user
 User.drop()
 Report = client.app.report
 Report.drop()
-Account = client.app.account
-Account.drop()
 
 afrieder = {
   'name': "Alex Frieder",
   '_id': "6312781242",
+  'username': 'afrieder',
+  'password': 'password',
   'phone': "6312781242",
   'lat': None,
   'long': None,
@@ -27,16 +27,11 @@ afrieder = {
 }
 User.insert_one(afrieder)
 
-afrieder_account = {
-  '_id': '6312781242',
-  'username': 'afrieder',
-  'password': 'password'
-}
-Account.insert_one(afrieder_account)
-
 blichtma = {
   'name': "Ben Lichtman",
   '_id': "6102466685",
+  'username': 'blichtma',
+  'password': 'password',
   'phone': "6102466685",
   'lat': None,
   'long': None,
@@ -45,13 +40,6 @@ blichtma = {
   'token': "Uhhhhhhh..?",
 }
 User.insert_one(blichtma)
-
-blichtma_account = {
-  '_id': '6102466685',
-  'username': 'blichtma',
-  'password': 'password'
-}
-Account.insert_one(blichtma_account)
 
 def notify_users(users, msg):
   for user in users:
@@ -179,18 +167,14 @@ def clearreport():
 
 @app.route('/register', methods=['POST'])
 def register():
-  if Account.count({'_id': request.form['phone']}) > 0:
+  if User.count({'_id': request.form['phone']}) > 0:
     return 'Phone number already registered.', status.HTTP_400_BAD_REQUEST
-  if Accout.count({'username': request.form['username']}) > 0:
+  if User.count({'username': request.form['username']}) > 0:
     return 'Username already in user.', status.HTTP_400_BAD_REQUEST
-  account = {
-    '_id': request.form['phone'],
-    'username': request.form['username'],
-    'password': request.form['password']
-  }
-  Account.insert_one(account)
   user = {
     '_id': request.form['phone'],
+    'username': request.form['username'],
+    'password': request.form['password'],
     'name': request.form['name'],
     'phone': request.form['phone'],
     'lat': None,
@@ -205,10 +189,9 @@ def register():
 
 @app.route('/login', methods=['POST'])
 def login():
-  account = Account.find_one({'username': request.form['username'], 'password': request.form['password']}, projection=['_id'])
-  if account is None:
-    return 'Account not found.', status.HTTP_401_UNAUTHORIZED
-  user = User.find_one({'_id': account['_id']}, projection=['phone', 'name', 'admin', '_id'])
+  user = User.find_one({'username': request.form['username'], 'password': request.form['password']}, projection=['phone', 'name', 'admin', '_id'])
+  if user is None:
+    return 'User not found.', status.HTTP_401_UNAUTHORIZED
   return jsonify(user)
 
 @app.route('/curadmin', methods=['POST'])
