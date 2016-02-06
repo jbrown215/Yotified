@@ -22,7 +22,11 @@ class CheckedInViewController: UIViewController {
     }
     
     @IBAction func checkOut() {
-        print("I'm Home!");
+        print("I'm Home!")
+    }
+    
+    @IBAction func makeReport() {
+        print("Making Report!")
     }
 
     /*

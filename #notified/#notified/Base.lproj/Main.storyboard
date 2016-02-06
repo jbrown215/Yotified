@@ -21,6 +21,7 @@
                                 <rect key="frame" x="209" y="308" width="182" height="119"/>
                                 <state key="normal" title="Make Report"/>
                                 <connections>
+                                    <action selector="makeReport" destination="BYZ-38-t0r" eventType="touchUpInside" id="RwU-hI-2Pc"/>
                                     <segue destination="5mw-78-VLz" kind="show" id="sAM-5p-C8R"/>
                                 </connections>
                             </button>
@@ -65,6 +66,7 @@
                                 <rect key="frame" x="209" y="338" width="182" height="119"/>
                                 <state key="normal" title="Make Report"/>
                                 <connections>
+                                    <action selector="makeReport" destination="Wz8-KU-MsG" eventType="touchUpInside" id="LG9-Tp-hVR"/>
                                     <segue destination="5mw-78-VLz" kind="show" id="AHl-Pi-AFL"/>
                                 </connections>
                             </button>

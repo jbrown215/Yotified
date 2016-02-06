@@ -26,5 +26,9 @@ class HomeViewController: UIViewController {
         print("Checking In");
     }
 
+    @IBAction func makeReport() {
+        print("Making Report!")
+    }
+    
 }
 
