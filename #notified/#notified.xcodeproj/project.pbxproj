@@ -48,6 +48,8 @@
 		D99510911C6697240063499E /* tongggight.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510901C6697240063499E /* tongggight.png */; };
 		D99510931C66979E0063499E /* settingszzzz.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510921C66979E0063499E /* settingszzzz.png */; };
 		D99510951C6697D30063499E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D99510941C6697D30063499E /* logo.png */; };
+		D9ABA7E21C66A56E00D2C4EB /* BLUERECT.png in Resources */ = {isa = PBXBuildFile; fileRef = D9ABA7E11C66A56E00D2C4EB /* BLUERECT.png */; };
+		D9ABA7EE1C66A7F700D2C4EB /* hgngnhgng.png in Resources */ = {isa = PBXBuildFile; fileRef = D9ABA7ED1C66A7F700D2C4EB /* hgngnhgng.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +228,8 @@
 		D99510901C6697240063499E /* tongggight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tongggight.png; sourceTree = "<group>"; };
 		D99510921C66979E0063499E /* settingszzzz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingszzzz.png; sourceTree = "<group>"; };
 		D99510941C6697D30063499E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		D9ABA7E11C66A56E00D2C4EB /* BLUERECT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BLUERECT.png; sourceTree = "<group>"; };
+		D9ABA7ED1C66A7F700D2C4EB /* hgngnhgng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hgngnhgng.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,10 +352,12 @@
 		D981DEC61C66549400538B4B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D9ABA7E11C66A56E00D2C4EB /* BLUERECT.png */,
 				D921200F1C6674F80075408D /* unchecked.png */,
 				D995108C1C66962C0063499E /* settingz.png */,
 				D99510941C6697D30063499E /* logo.png */,
 				D99510661C668F640063499E /* housecontact.png */,
+				D9ABA7ED1C66A7F700D2C4EB /* hgngnhgng.png */,
 				D99510681C6693C50063499E /* backgroundcheck.png */,
 				D99510921C66979E0063499E /* settingszzzz.png */,
 				D99510881C66956C0063499E /* phoneeee.png */,
@@ -590,6 +596,7 @@
 			files = (
 				279D69641C667BC6003101F9 /* Muli-Regular.ttf in Resources */,
 				D99510951C6697D30063499E /* logo.png in Resources */,
+				D9ABA7EE1C66A7F700D2C4EB /* hgngnhgng.png in Resources */,
 				D995107A1C6693C50063499E /* phone.png in Resources */,
 				D99510931C66979E0063499E /* settingszzzz.png in Resources */,
 				279D69651C667BC6003101F9 /* DINAlternate.ttf in Resources */,
@@ -601,6 +608,7 @@
 				2799B3EF1C658B4600F4DA9D /* LaunchScreen.storyboard in Resources */,
 				2799B3EC1C658B4600F4DA9D /* Assets.xcassets in Resources */,
 				D92120041C6674F20075408D /* checked.png in Resources */,
+				D9ABA7E21C66A56E00D2C4EB /* BLUERECT.png in Resources */,
 				2799B3EA1C658B4600F4DA9D /* Main.storyboard in Resources */,
 				D99510671C668F640063499E /* housecontact.png in Resources */,
 				D995107C1C6693C50063499E /* phonecontact.png in Resources */,
