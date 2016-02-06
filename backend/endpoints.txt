@@ -69,12 +69,13 @@ ADMIN:
         checkedin: bool of whether user is checked in or not
     /admins
       admins: (list of)
-        _id = user's id as str
+        _id: user's id as str
         name: duh
         phone: phone number
+        admin: true if on duty
     /reports
       reports: (list of)
-        _id: unique id for report (int)
+        _id: unique id for report (str)
         name: name of the report (str)
         sender: unique id for reporter (null if anonymous)
         handler: unique id for admin handler (null if not yet handled)
@@ -99,4 +100,8 @@ ADMIN:
     /clearreport
       _id: id of report
       (Can only be reached by handler)
+    /curadmin
+      _id: user id
+      Returns:
+        admin: true if on duty, false if off duty, null if not admin I KNOW SHUT UP
 

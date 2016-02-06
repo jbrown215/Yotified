@@ -12,12 +12,12 @@ User = client.app.user
 User.drop()
 Report = client.app.report
 Report.drop()
-Account = client.app.account
-Account.drop()
 
 afrieder = {
   'name': "Alex Frieder",
   '_id': "6312781242",
+  'username': 'afrieder',
+  'password': 'password',
   'phone': "6312781242",
   'lat': None,
   'long': None,
@@ -30,6 +30,8 @@ User.insert_one(afrieder)
 blichtma = {
   'name': "Ben Lichtman",
   '_id': "6102466685",
+  'username': 'blichtma',
+  'password': 'password',
   'phone': "6102466685",
   'lat': None,
   'long': None,
@@ -39,22 +41,10 @@ blichtma = {
 }
 User.insert_one(blichtma)
 
-def notify_admins(msg):
-  admins = User.find(filter={'admin':True}, projection={"token":True})
-  for admin in admins:
+def notify_users(users, msg):
+  for user in users:
     payload = Payload(alert=msg, sound="default", badge=1)
-    apns.gateway_server.send_notification(admin['token'], payload)
-
-def new_report(sender, lat, longg):
-  report = {
-    'time': strftime('%I:%M %p'),
-    'sender': sender,
-    'lat': lat,
-    'long': longg,
-    'handler': None,
-    'data': None
-  }
-  return str(Report.insert_one(report).inserted_id)
+    apns.gateway_server.send_notification(user['token'], payload)
 
 @app.route('/checkin', methods=['POST'])
 def checkin():
@@ -78,9 +68,20 @@ def report():
   longg = request.form['long']
   User.update_one({'_id':user_id}, {'$set': {'lat': lat, 'long': longg}})
   name = None if anon else User.find_one({'_id': user_id}, projection={'name':True})['name']
+  report = {
+    'time': strftime('%I:%M %p'),
+    'sender': None if anon else user_id,
+    '_sender': user_id,
+    'lat': lat,
+    'long': longg,
+    'handler': None,
+    'data': None
+  }
+  report_id = Report.insert_one(report).inserted_id
   msg = "A new report has been opened{}!".format('' if anon else ' by {}'.format(name))
-  notify_admins(msg)
-  return jsonify({'_id': new_report(None if anon else user_id, lat, longg)})
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, msg)
+  return jsonify({'_id': report_id})
 
 @app.route('/lowbatt', methods=['POST'])
 def lowbatt():
@@ -89,7 +90,8 @@ def lowbatt():
   longg = request.form['long']
   User.update_one({'_id':user_id}, {'$set': {'lat': lat, 'long': longg}})
   name = User.find_one({'_id':user_id}, projection={'name':True})['name']
-  notify_admins("{} has a low battery.".format(name))
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, "{} has a low battery.".format(name))
   return ''
 
 @app.route('/reportinfo', methods=['POST'])
@@ -98,7 +100,8 @@ def reportinfo():
   data = request.form['data']
   Report.update_one({'_id':report_id}, {'$set': {'data': data}})
   time = Report.find_one({'_id': report_id}, projection={'time':True})['time']
-  notify_admins("The report opened at {} has been updated.".format(time))
+  admins = User.find(filter={'admin':True}, projection={"token":True})
+  notify_users(admins, "The report opened at {} has been updated.".format(time))
   return ''
 
 @app.route('/roster', methods=['GET'])
@@ -115,8 +118,8 @@ def checkedin():
 
 @app.route('/admins', methods=['GET'])
 def admins():
-  keys = ['name', 'phone', '_id']
-  users = User.find(filter={'admin':True}, projection=keys)
+  keys = ['name', 'phone', '_id', 'admin']
+  users = User.find(filter={'$or': [{'admin': True}, {'admin': False}]}, projection=keys)
   return jsonify({'admins': list(users)})
 
 @app.route('/reports', methods=['GET'])
@@ -151,7 +154,10 @@ def toggleduty():
 
 @app.route('/handlereport', methods=['POST'])
 def handlereport():
-  Report.update_one({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
+  report = Report.find_one_and_update({'_id': ObjectId(request.form['_id'])}, {'$set': {'handler': request.form['handler']}})
+  name = User.find_one({'_id': request.form['handler']}, projection={'name':True})['name']
+  user = User.find_one({'_id': report['_sender']}, projection={'token': True})
+  notify_users([user], "{} is handling your report.".format(name))
   return ''
 
 @app.route('/clearreport', methods=['POST'])
@@ -161,18 +167,14 @@ def clearreport():
 
 @app.route('/register', methods=['POST'])
 def register():
-  if Account.count({'_id': request.form['phone']}) > 0:
+  if User.count({'_id': request.form['phone']}) > 0:
     return 'Phone number already registered.', status.HTTP_400_BAD_REQUEST
-  if Accout.count({'username': request.form['username']}) > 0:
+  if User.count({'username': request.form['username']}) > 0:
     return 'Username already in user.', status.HTTP_400_BAD_REQUEST
-  account = {
-    '_id': request.form['phone'],
-    'username': request.form['username'],
-    'password': request.form['password']
-  }
-  Account.insert_one(account)
   user = {
     '_id': request.form['phone'],
+    'username': request.form['username'],
+    'password': request.form['password'],
     'name': request.form['name'],
     'phone': request.form['phone'],
     'lat': None,
@@ -187,11 +189,14 @@ def register():
 
 @app.route('/login', methods=['POST'])
 def login():
-  account = Account.find_one({'username': request.form['username'], 'password': request.form['password']}, projection=['_id'])
-  if account is None:
-    return 'Account not found.', status.HTTP_401_UNAUTHORIZED
-  user = User.find_one({'_id': account['_id']}, projection=['phone', 'name', 'admin', '_id'])
+  user = User.find_one({'username': request.form['username'], 'password': request.form['password']}, projection=['phone', 'name', 'admin', '_id'])
+  if user is None:
+    return 'User not found.', status.HTTP_401_UNAUTHORIZED
   return jsonify(user)
+
+@app.route('/curadmin', methods=['POST'])
+def curadmin():
+  return jsonify(User.find_one({'_id':request.form['_id']}, projection={'admin':True}))
 
 if __name__ == '__main__':
     app.run(debug=True)

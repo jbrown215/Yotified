@@ -1,17 +1,22 @@
 //
-//  CheckedInViewController.swift
+//  ContactDetailViewController.swift
 //  #notified
 //
-//  Created by Benjamin Lichtman on 2/5/16.
+//  Created by Jordan Brown on 2/6/16.
 //  Copyright © 2016 woosufjordaline. All rights reserved.
 //
 
 import UIKit
 
-class CheckedInViewController: UIViewController {
+class ContactDetailViewController: UIViewController {
+    
+    @IBOutlet var label : UILabel!
+    
+    var name : String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.text = name
 
         // Do any additional setup after loading the view.
     }
@@ -21,18 +26,7 @@ class CheckedInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func checkOut() {
-        print("I'm Home!")
-    }
     
-    @IBAction func makeReport() {
-        print("Making Report!")
-    }
-    
-    @IBAction func unwindToCheckin(segue:UIStoryboardSegue) {
-        print ("Unwindeded")
-    }
-
 
     /*
     // MARK: - Navigation
