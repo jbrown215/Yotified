@@ -37,8 +37,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func checkIn() {
         print("Checking In");
         if (CLLocationCoordinate2DIsValid(currentLoc)) {
+            Server.checkIn(currentLoc.latitude as Double, long: currentLoc.longitude as Double, userId: 6102466685)
             print("valid loc")
         }
+        locationManager.stopUpdatingLocation()
     }
 
     @IBAction func makeReport() {
@@ -46,6 +48,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func unwindToHome(segue:UIStoryboardSegue) {
+        Server.checkOut(6102466685)
+        locationManager.startUpdatingLocation()
         print ("Unwindeded")
     }
     
@@ -53,7 +57,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         currentLoc = locValue
-        
     }
     
 }
