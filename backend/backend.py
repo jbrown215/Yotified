@@ -127,8 +127,8 @@ def checkedin():
 
 @app.route('/admins', methods=['GET'])
 def admins():
-  keys = ['name', 'phone', '_id']
-  users = User.find(filter={'admin':True}, projection=keys)
+  keys = ['name', 'phone', '_id', 'admin']
+  users = User.find(filter={'$or': [{'admin': True}, {'admin': False}]}, projection=keys)
   return jsonify({'admins': list(users)})
 
 @app.route('/reports', methods=['GET'])
