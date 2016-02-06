@@ -30,5 +30,10 @@ class HomeViewController: UIViewController {
         print("Making Report!")
     }
     
+    @IBAction func unwindToHome(segue:UIStoryboardSegue) {
+        print ("Unwindeded")
+    }
+
+    
 }
 

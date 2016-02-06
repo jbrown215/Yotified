@@ -1,36 +1,31 @@
 //
-//  ReportViewController.swift
+//  ContactsViewController.swift
 //  #notified
 //
-//  Created by Benjamin Lichtman on 2/5/16.
+//  Created by Jordan Brown on 2/6/16.
 //  Copyright © 2016 woosufjordaline. All rights reserved.
 //
 
 import UIKit
 
-class ReportViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-
+class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     @IBOutlet var tableView : UITableView!
     @IBOutlet var searchBar : UISearchBar!
     
+    var contacts = ["Ben", "Caroline", "Jordan", "Frieder"]
+    var filtered = [String()]
+    var searchActive = false
+    
     let textCellIdentifier = "TextCell"
-    
-    let roster = ["Caroline Hermans", "Frieder", "JB MOTHAFUCKA"]
-    var filtered:[String] = []
-    var searchActive : Bool = false
-    var selectedMap = [String: Bool]()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
-        for troubleOption in roster {
-            selectedMap[troubleOption] = false;
-        }
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +33,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     // MARK: - Search bar protocol methods
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
@@ -58,7 +53,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filtered = roster.filter({ (text) -> Bool in
+        filtered = contacts.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
@@ -77,7 +72,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         if(searchActive) {
             return filtered.count
         }
-        return roster.count;
+        return contacts.count;
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -90,7 +85,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         if(searchActive){
             cell.textLabel?.text = filtered[indexPath.row]
         } else {
-            cell.textLabel?.text = roster[indexPath.row];
+            cell.textLabel?.text = contacts[indexPath.row];
         }
         return cell
     }
@@ -98,30 +93,20 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let row = indexPath.row
-        selectedMap[roster[row]] = !selectedMap[roster[row]]!
-        print(selectedMap)
+        if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
+            resultController.name = contacts[indexPath.row]
+            self.navigationController?.pushViewController(resultController, animated: true)
+        }
     }
     
-    @IBAction func dismissModal(segue:UIStoryboardSegue) {
-        print ("Unwindeded")
-    }
-    
-    @IBAction func onBackPressed() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-
     /*
     // MARK: - Navigation
-    */
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "POST_REPORT") {
-            let dest : PostReportViewController = segue.destinationViewController as! PostReportViewController
-            dest.selectedMap = self.selectedMap
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }
