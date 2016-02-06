@@ -13,33 +13,60 @@ User.drop()
 Report = client.app.report
 Report.drop()
 
-afrieder = {
-  'name': "Alex Frieder",
-  '_id': "6312781242",
-  'username': 'afrieder',
-  'password': 'password',
-  'phone': "6312781242",
-  'lat': None,
-  'long': None,
-  'admin': None,
-  'checkedin': False,
-  'token': "Uhhhhhhh..?",
-}
-User.insert_one(afrieder)
+# afrieder = {
+#   'name': "Alex Frieder",
+#   '_id': "6312781242",
+#   'username': 'afrieder',
+#   'password': 'password',
+#   'phone': "6312781242",
+#   'lat': None,
+#   'long': None,
+#   'admin': None,
+#   'checkedin': False,
+#   'token': "Uhhhhhhh..?",
+# }
+# User.insert_one(afrieder)
 
-blichtma = {
-  'name': "Ben Lichtman",
-  '_id': "6102466685",
-  'username': 'blichtma',
-  'password': 'password',
-  'phone': "6102466685",
-  'lat': None,
-  'long': None,
-  'admin': True,
-  'checkedin': False,
-  'token': "09ec5b178f01dc1a2ae0489c1700cc4afe06682adeca6a22e267483e37e393dc",
-}
-User.insert_one(blichtma)
+# blichtma = {
+#   'name': "Ben Lichtman",
+#   '_id': "6102466685",
+#   'username': 'blichtma',
+#   'password': 'password',
+#   'phone': "6102466685",
+#   'lat': None,
+#   'long': None,
+#   'admin': True,
+#   'checkedin': False,
+#   'token': "09ec5b178f01dc1a2ae0489c1700cc4afe06682adeca6a22e267483e37e393dc",
+# }
+# User.insert_one(blichtma)
+
+users = [
+ ('Alex Frieder', 'afrieder', '6312781242', None),
+ ('Ben Lichtman', 'blichtma', '6102466685', True),
+ ('Caroline Hermans', 'chermans', '1847291844', None),
+ ('Jordan Brown', 'jmbrown', '6132121099', True),
+ ('Avi Romanoff', 'avi', '2019847261', False),
+ ('Kenneth Cohen', 'kcohen', '8724721298', None),
+ ('Isaac Haberman', 'ihaberma', '9347162626', False),
+ ('Klaus Sutner', 'ksutner', '1241240999', None),
+ ('Manuel Blum', 'mblum', '8472359893', None)
+]
+
+for (name, username, phone, admin) in users:
+  user = {
+    'name': name,
+    '_id': phone,
+    'username': username,
+    'password': 'password',
+    'phone': phone,
+    'lat': None,
+    'long': None,
+    'admin': admin,
+    'checkedin': False,
+    'token': "09ec5b178f01dc1a2ae0489c1700cc4afe06682adeca6a22e267483e37e393dc"
+  }
+  User.insert_one(user)
 
 def notify_users(users, msg):
   for user in users:
