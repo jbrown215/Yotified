@@ -51,8 +51,8 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        if (indexPath.row >= atRiskMembers.count) {
-            cell.textLabel?.text = checkedInMembers[indexPath.row - atRiskMembers.count]
+        if (indexPath.section == 1) {
+            cell.textLabel?.text = checkedInMembers[indexPath.row]
         } else {
             cell.textLabel?.text = atRiskMembers[indexPath.row]
         }
@@ -63,9 +63,9 @@ class TonightViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if (indexPath.row >= atRiskMembers.count) {
+        if (indexPath.section == 1) {
             if let resultController = storyboard!.instantiateViewControllerWithIdentifier("ContactDetailViewController") as? ContactDetailViewController {
-                resultController.name = checkedInMembers[indexPath.row - atRiskMembers.count]
+                resultController.name = checkedInMembers[indexPath.row]
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         } else {
